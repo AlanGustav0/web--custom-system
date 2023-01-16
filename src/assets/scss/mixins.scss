@@ -21,3 +21,18 @@
     @content;
   }
 }
+
+@mixin button-style{
+  border-radius: 1rem;
+        padding: 9px 20px 9px 20px;
+        background-color: var(--primary-color);
+        border: none;
+        color: var(--secundary);
+        font-weight: 600;
+        cursor: pointer;
+        margin-bottom: 1rem;
+
+        &:hover{
+          opacity: 0.9;
+        }
+}
