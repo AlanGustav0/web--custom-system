@@ -1,6 +1,6 @@
 @import "./../../assets/scss/mixins.scss";
 
-.login-container {
+.login__container {
   height: 100vh;
   display: flex;
 
@@ -50,7 +50,6 @@
     flex-direction: column;
     justify-content: center;
 
-
     @include for-phone-only {
       align-items: baseline;
       flex-direction: column;
@@ -62,38 +61,43 @@
       padding-left: 52px;
     }
 
+    &__form {
+      border-radius: 20px;
+      padding: 64px 32px 30px 32px;
+      background-color: var(--primary-default-blue);
+      color: var(--primary-color);
+      max-width: 434px;
 
-
-      &__form {
-        border-radius: 20px;
-        padding: 64px 32px 30px 32px;
-        background-color: var(--primary-default-blue);
-        color: var(--primary-color);
-        max-width: 434px;
-
-        input {
-          @include input-style;
-        }
-
-        @include for-phone-only {
-          margin: 50px 26px 135px 26px;
-        }
-
-
-        &__button {
-          @include button-style;
-        }
+      input {
+        @include input-style;
       }
 
-      &__icon{
-        background-image: url('../../assets/icons/arrow_back_left.svg');
-        background-size: cover;
-        background-position: center center;
-        min-width: 30px;
-        min-height: 30px;
-        align-self: flex-start;
-        cursor: pointer;
-
+      @include for-phone-only {
+        margin: 50px 26px 135px 26px;
       }
+
+      &__button {
+        @include button-style;
+
+        &:disabled {
+          color: var(--default-gray);
+          opacity: 0.9;
+        }
+
+        &:hover:disabled {
+          opacity: 0.9;
+        }
+      }
+    }
+
+    &__icon {
+      background-image: url("../../assets/icons/arrow_back_left.svg");
+      background-size: cover;
+      background-position: center center;
+      min-width: 30px;
+      min-height: 30px;
+      align-self: flex-start;
+      cursor: pointer;
+    }
   }
 }

@@ -1,36 +1,58 @@
-<main class="login-container">
-  <div class="login-container__content-image">
-    <section class="login-container__content-image__image">
-      <div class="login-container__content-image__image-inner"></div>
+<main class="login__container">
+  <div class="login__container__content-image">
+    <section class="login__container__content-image__image">
+      <div class="login__container__content-image__image-inner"></div>
     </section>
   </div>
-    <div class="login-container__content-form">
-      <section class="login-container__content-form__form">
-        <form>
-          <div class="form-group mb-3">
-            <label class="mb-3" for="name">Nome</label>
-            <input
-              type="text"
-              class="form-control"
-              id="name"
-              placeholder="Digite seu nome"
-            />
-          </div>
-          <div class="form-group mb-5">
-            <label class="mb-3" for="password">Senha</label>
-            <input
-              type="text"
-              class="form-control"
-              id="password"
-              placeholder="Digite sua senha"
-            />
-          </div>
-          <button type="submit" title="Acessar o sistema" class="login-container__content-form__form__button">
-            Acessar sistema
-          </button>
-        </form>
-      </section>
-      <a title="Retornar a página de boas-vindas" class="login-container__content-form__icon mt-4" routerLink="/welcome"></a>
-    </div>
-
+  <div class="login__container__content-form">
+    <section class="login__container__content-form__form">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group mb-3">
+          <label class="mb-3" for="name">Nome</label>
+          <input
+            formControlName="name"
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Digite seu nome"
+          />
+          <ng-container *ngIf="loginForm.controls['name'].touched">
+            <app-tooltip
+              *ngIf="loginForm.get('name')?.errors"
+              text="O campo nome é obrigatório"
+            ></app-tooltip>
+          </ng-container>
+        </div>
+        <div class="form-group mb-5">
+          <label class="mb-3" for="password">Senha</label>
+          <input
+            formControlName="password"
+            type="text"
+            class="form-control"
+            id="password"
+            placeholder="Digite sua senha"
+          />
+          <ng-container *ngIf="loginForm.controls['password'].touched">
+            <app-tooltip
+              *ngIf="loginForm.get('password')?.errors"
+              text="O campo senha é obrigatório"
+            ></app-tooltip>
+          </ng-container>
+        </div>
+        <button
+          [disabled]="loginForm.invalid"
+          type="submit"
+          title="Acessar o sistema"
+          class="login__container__content-form__form__button"
+        >
+          Acessar sistema
+        </button>
+      </form>
+    </section>
+    <a
+      title="Retornar a página de boas-vindas"
+      class="login__container__content-form__icon mt-4"
+      routerLink="/welcome"
+    ></a>
+  </div>
 </main>
