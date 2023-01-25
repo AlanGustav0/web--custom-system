@@ -1,0 +1,63 @@
+.menu__container{
+  background-color: var(--secundary-default-blue);
+  padding:22px 20px 22px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  &__menu-list{
+    list-style: none;
+  }
+
+  &__icon{
+    color:var(--primary-color);
+  }
+
+  &__user{
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+
+    image{
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+
+.overlay-menu{
+  width: 0px;
+  height: 0px;
+  animation-name: animate-overlay-out;
+  animation-duration: 0.5s;
+  background-color: var(--third-default-blue);
+  opacity: 0.2;
+
+  &.active{
+    width: 250px;
+    height: 100vh;
+    animation-name: animate-overlay-in;
+    animation-duration: 0.5s;
+  }
+}
+
+@keyframes animate-overlay-in{
+  from {
+    width: 0px;
+  }
+  to{
+    width: 250px;
+  }
+}
+
+@keyframes animate-overlay-out{
+  from {
+    width: 250px;
+    height: 100vh;
+  }
+  to{
+    width: 0px;
+    height: 100vh;
+  }
+}
