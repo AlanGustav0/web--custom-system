@@ -82,6 +82,7 @@
         &:disabled {
           color: var(--default-gray);
           opacity: 0.9;
+          cursor: default;
         }
 
         &:hover:disabled {

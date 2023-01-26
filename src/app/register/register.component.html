@@ -6,35 +6,56 @@
   </div>
     <div class="register__container__content-form">
       <section class="register__container__content-form__form">
-        <form>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
           <div class="form-group mb-3">
             <label class="mb-3" for="name">Nome</label>
             <input
+            formControlName="name"
               type="text"
               class="form-control"
               id="name"
               placeholder="Digite seu nome"
             />
+            <ng-container *ngIf="registerForm.controls['name'].touched">
+            <app-tooltip
+              *ngIf="registerForm.get('name')?.errors"
+              text="O campo nome é obrigatório"
+            ></app-tooltip>
+          </ng-container>
           </div>
           <div class="form-group mb-3">
             <label class="mb-3" for="password">Senha</label>
             <input
+            formControlName="password"
               type="text"
               class="form-control"
               id="password"
               placeholder="Digite sua senha"
             />
+            <ng-container *ngIf="registerForm.controls['password'].touched">
+            <app-tooltip
+              *ngIf="registerForm.get('password')?.errors"
+              text="O campo senha é obrigatório"
+            ></app-tooltip>
+          </ng-container>
           </div>
           <div class="form-group mb-5">
-            <label class="mb-3" for="confirm-password">Confirmar senha</label>
+            <label class="mb-3" for="confirmPassword">Confirmar senha</label>
             <input
+            formControlName="confirmPassword"
               type="text"
               class="form-control"
-              id="confirm-password"
+              id="confirmPassword"
               placeholder="Confirme sua senha"
             />
+          <ng-container *ngIf="registerForm.controls['confirmPassword'].touched">
+            <app-tooltip
+              *ngIf="registerForm.get('confirmPassword')?.errors"
+              text="O campo confirmar senha é obrigatório"
+            ></app-tooltip>
+          </ng-container>
           </div>
-          <button type="submit" title="Acessar o sistema" class="register__container__content-form__form__button">
+          <button [disabled]="registerForm.invalid" type="submit" title="Acessar o sistema" class="register__container__content-form__form__button">
             Acessar sistema
           </button>
         </form>

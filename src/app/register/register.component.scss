@@ -81,6 +81,16 @@
 
         &__button {
           @include button-style;
+
+          &:disabled {
+            color: var(--default-gray);
+            opacity: 0.9;
+            cursor: default;
+          }
+
+          &:hover:disabled {
+            opacity: 0.9;
+          }
         }
       }
 
