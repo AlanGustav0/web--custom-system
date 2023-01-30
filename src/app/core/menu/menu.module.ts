@@ -1,3 +1,4 @@
+import { OverlayModule } from './../../shared/components/overlay/overlay.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MenuComponent } from './menu.component';
@@ -11,7 +12,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   ],
   imports: [
     CommonModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    OverlayModule
   ],
   exports:[MenuComponent]
 })
