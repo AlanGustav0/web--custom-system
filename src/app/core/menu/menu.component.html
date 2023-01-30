@@ -5,14 +5,14 @@
   <div class="menu__container__user" (click)="toggle()">
     <img src="./../../assets/images/image-profile.svg" alt="Imagem do perfil do usuário">
   </div>
-  <app-overlay [showOverlay]="showOverlay">
-    <ng-template #content>
-      <ul>
-        <li>Meus dados</li>
-        <li>Configurações</li>
-        <li>Sair do sistema</li>
-      </ul>
-    </ng-template>
-  </app-overlay>
 </nav>
+<app-overlay [showOverlay]="showOverlay">
+  <ng-template #content>
+    <ul>
+      <li>Meus dados</li>
+      <li>Configurações</li>
+      <li>Sair do sistema</li>
+    </ul>
+  </ng-template>
+</app-overlay>
 <div class="overlay-menu" id="overlay-menu"></div>

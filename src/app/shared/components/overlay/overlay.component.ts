@@ -1,4 +1,5 @@
 import { Component, ContentChild, EventEmitter, Input, OnChanges, Output, TemplateRef } from '@angular/core';
+import { ConnectableObservable } from 'rxjs';
 
 @Component({
   selector: 'app-overlay',
@@ -13,6 +14,7 @@ export class OverlayComponent implements OnChanges{
 
   ngOnChanges(): void {
    this.toggle();
+
   }
 
   toggle(){
@@ -23,7 +25,5 @@ export class OverlayComponent implements OnChanges{
     }else{
       overlay?.classList.remove('active');
     }
-
-
   }
 }
