@@ -46,19 +46,19 @@
   &__content-form {
     display: flex;
     align-items: center;
-    padding-left: 144px;
     flex-direction: column;
     justify-content: center;
+    padding-left: 144px;
 
     @include for-phone-only {
       align-items: baseline;
       flex-direction: column;
+
     }
 
     @include for-tablet-only {
       justify-content: center;
       flex-direction: column;
-      padding-left: 52px;
     }
 
     &__form {
@@ -87,6 +87,28 @@
 
         &:hover:disabled {
           opacity: 0.9;
+        }
+      }
+
+      span{
+        display: flex;
+        position: relative;
+        align-items: center;
+      }
+
+      &__icon-button{
+        background-image: url('../../assets/icons/eye-solid.svg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 18px;
+        height: 16px;
+        position: absolute;
+        right: 5%;
+        top: 25%;
+        cursor: pointer;
+
+        &.hidden{
+          background-image: url('../../assets/icons/eye-slash-solid.svg');
         }
       }
     }

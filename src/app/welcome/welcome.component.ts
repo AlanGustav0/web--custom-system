@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 
 const FormThems = {
   FORM_DEFAULT: './../../assets/images/forms.svg',
@@ -13,15 +13,20 @@ const FormThems = {
 export class WelcomeComponent implements OnInit {
   public formImage = FormThems.FORM_DEFAULT;
 
-  ngOnInit(): void {
-    const $html = document.querySelector('body');
-    const $checkbox = document.querySelector('#switch');
+  constructor(private readonly _elementRef: ElementRef<HTMLElement>) {}
 
-    $checkbox?.addEventListener('change',  () => {
-      $html?.classList.toggle('dark-theme');
-      if($html?.classList.contains('dark-theme')){
+  ngOnInit(): void {
+    this.changeTheme();
+  }
+
+  changeTheme(){
+    const htmlElement = this._elementRef.nativeElement.querySelector('body');
+    const checkboxElement = this._elementRef.nativeElement.querySelector('#switch');
+    checkboxElement?.addEventListener('change', () => {
+      htmlElement?.classList.toggle('dark-theme');
+      if (htmlElement?.classList.contains('dark-theme')) {
         this.formImage = FormThems.FORM_DARK_THEME;
-      }else{
+      } else {
         this.formImage = FormThems.FORM_DEFAULT;
       }
     });

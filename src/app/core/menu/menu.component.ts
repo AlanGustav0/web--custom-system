@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output } from '@angular/core';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
 
@@ -11,8 +11,10 @@ export class MenuComponent {
   public iconBars = faBars;
   public showOverlay = false;
 
+  constructor(private readonly _elementRef:ElementRef<HTMLElement>){}
+
   public activeMenu(){
-    const menu = document.querySelector('#overlay-menu');
+    const menu = this._elementRef.nativeElement.querySelector('#overlay-menu');
     menu?.classList.toggle('active');
 
     if(menu?.classList.contains('active')){
