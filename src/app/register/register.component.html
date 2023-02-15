@@ -65,7 +65,7 @@
           </ng-container>
         </div>
         <button
-          [disabled]="registerForm.invalid"
+          [disabled]="registerForm.invalid || checkPasswordValidation()"
           type="submit"
           title="Acessar o sistema"
           class="register__container__content-form__form__button"

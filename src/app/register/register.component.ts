@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.registerForm = this._formBuilder.group({
       userName: ['', Validators.required],
       password: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
+      confirmPassword: ['', [Validators.required]],
     });
   }
 
