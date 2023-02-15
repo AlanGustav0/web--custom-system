@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OverlayComponent } from './overlay.component';
+import { OverlayPanelComponent } from './overlay-panel.component';
 
-describe('OverlayComponent', () => {
-  let component: OverlayComponent;
-  let fixture: ComponentFixture<OverlayComponent>;
+describe('OverlayPanelComponent', () => {
+  let component: OverlayPanelComponent;
+  let fixture: ComponentFixture<OverlayPanelComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OverlayComponent ]
+      declarations: [ OverlayPanelComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(OverlayComponent);
+    fixture = TestBed.createComponent(OverlayPanelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

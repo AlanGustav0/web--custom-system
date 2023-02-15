@@ -3,17 +3,16 @@ import {
   ContentChild,
   Input,
   OnChanges,
-  Output,
   TemplateRef,
   ElementRef,
 } from '@angular/core';
 
 @Component({
   selector: 'app-overlay',
-  templateUrl: './overlay.component.html',
-  styleUrls: ['./overlay.component.scss'],
+  templateUrl: './overlay-panel.component.html',
+  styleUrls: ['./overlay-panel.component.scss'],
 })
-export class OverlayComponent implements OnChanges {
+export class OverlayPanelComponent implements OnChanges {
   @Input() showOverlay!: boolean;
   @ContentChild('content')
   content!: TemplateRef<any>;

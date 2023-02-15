@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { OverlayComponent } from './overlay.component';
+import { OverlayPanelComponent } from './overlay-panel.component';
 
 
 
 @NgModule({
   declarations: [
-    OverlayComponent
+    OverlayPanelComponent
   ],
   imports: [
     CommonModule
   ],
-  exports:[OverlayComponent]
+  exports:[OverlayPanelComponent]
 })
-export class OverlayModule { }
+export class OverlayPanelModule { }
