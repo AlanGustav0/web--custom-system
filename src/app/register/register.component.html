@@ -53,6 +53,10 @@
               *ngIf="registerForm.get('confirmPassword')?.errors"
               text="O campo confirmar senha é obrigatório"
             ></app-tooltip>
+            <app-tooltip
+              *ngIf="checkPasswordValidation() && !registerForm.get('confirmPassword')?.errors"
+              text="O campo confirmar senha não confere com o campo senha."
+            ></app-tooltip>
           </ng-container>
           </div>
           <button [disabled]="registerForm.invalid" type="submit" title="Acessar o sistema" class="register__container__content-form__form__button">
