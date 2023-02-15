@@ -1,4 +1,4 @@
-import { MenuModule } from './../core/menu/menu.module';
+
 
 import { HomeRoutingModule } from './home-routing-module';
 import { NgModule } from '@angular/core';
@@ -13,8 +13,6 @@ import { HomeComponent } from './home.component';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    MenuModule
-
 
   ]
 })

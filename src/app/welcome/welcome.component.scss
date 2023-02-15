@@ -6,6 +6,9 @@
   justify-content: center;
   width: 100vw;
   align-items: center;
+  z-index: 2;
+  position: relative;
+  background-color: var(--primary-color);;
 
   &__content {
     position: relative;
