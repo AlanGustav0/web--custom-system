@@ -1,24 +1,47 @@
-import { Component, OnInit } from '@angular/core';
+import { RegisterRequest } from '../core/services/login/request/register-request.interface';
+import { RegisterService } from './../core/register.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit,OnDestroy {
   public registerForm!: FormGroup;
+  public _unsub$ = new Subject<void>();
 
-  constructor(private readonly _formBuilder: FormBuilder) {}
+  constructor(
+    private readonly _formBuilder: FormBuilder,
+    private readonly _registerService: RegisterService
+  ) {}
+
   ngOnInit(): void {
     this.registerForm = this._formBuilder.group({
-      name:['',Validators.required],
-      password:['',Validators.required],
-      confirmPassword:['',Validators.required]
-    })
+      userName: ['', Validators.required],
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required],
+    });
   }
 
-  onSubmit(){
-    console.log(this.registerForm.getRawValue());
+  onSubmit() {
+    const registerRequest:RegisterRequest = {
+      userName:this.registerForm?.get('userName')?.value,
+      password:this.registerForm?.get('password')?.value,
+    }
+    this._registerService
+      .register(registerRequest)
+      .pipe(takeUntil(this._unsub$))
+      .subscribe({
+        next: (response) => {
+          console.log(response);
+        },
+      });
+  }
+  ngOnDestroy(): void {
+    this._unsub$.next();
+    this._unsub$.complete();
   }
 }

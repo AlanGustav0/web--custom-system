@@ -3,6 +3,8 @@
 .login__container {
   height: 100vh;
   display: flex;
+  z-index: 2;
+  position: relative;
 
   @include for-phone-only {
     flex-direction: column;
@@ -49,6 +51,7 @@
     flex-direction: column;
     justify-content: center;
     padding-left: 144px;
+    background-color: var(--primary-color);
 
     @include for-phone-only {
       align-items: baseline;

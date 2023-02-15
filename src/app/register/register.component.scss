@@ -3,6 +3,8 @@
 .register__container {
   height: 100vh;
   display: flex;
+  position: relative;
+  z-index: 2;
 
   @include for-phone-only {
     flex-direction: column;
@@ -49,6 +51,7 @@
     padding-left: 144px;
     flex-direction: column;
     justify-content: center;
+    background-color: var(--primary-color);
 
     @include for-phone-only {
       align-items: baseline;
