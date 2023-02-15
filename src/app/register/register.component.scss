@@ -49,10 +49,9 @@
   &__content-form {
     display: flex;
     align-items: center;
-    padding-left: 144px;
+    padding-left: 344px;
     flex-direction: column;
     justify-content: center;
-    background-color: var(--primary-color);
 
     @include for-phone-only {
       align-items: baseline;
