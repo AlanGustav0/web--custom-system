@@ -8,17 +8,17 @@
     <section class="login__container__content-form__form">
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="form-group mb-3">
-          <label class="mb-3" for="name">Nome</label>
+          <label class="mb-3" for="userName">Nome</label>
           <input
-            formControlName="name"
+            formControlName="userName"
             type="text"
             class="form-control"
-            id="name"
+            id="userName"
             placeholder="Digite seu nome"
           />
-          <ng-container *ngIf="loginForm.controls['name'].touched">
+          <ng-container *ngIf="loginForm.controls['userName'].touched">
             <app-tooltip
-              *ngIf="loginForm.get('name')?.errors"
+              *ngIf="loginForm.get('userName')?.errors"
               text="O campo nome é obrigatório"
             ></app-tooltip>
           </ng-container>

@@ -1,7 +1,9 @@
+import { Router } from '@angular/router';
 import { LoginService } from './../core/services/login/login.service';
 import { Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
+import { LoginRequest } from '../core/services/login/request/login-request.interface';
 
 @Component({
   selector: 'app-login',
@@ -15,24 +17,28 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(
     private readonly _formBuilder: FormBuilder,
     private readonly _elementRef: ElementRef<HTMLElement>,
-    private readonly _loginService: LoginService
+    private readonly _loginService: LoginService,
+    private readonly _router: Router
   ) {}
 
   ngOnInit(): void {
     this.loginForm = this._formBuilder.group({
-      name: ['', Validators.required],
+      userName: ['', Validators.required],
       password: ['', Validators.required],
     });
   }
 
   onSubmit() {
-    const user = this.loginForm.getRawValue();
+    const loginRequest: LoginRequest = {
+      userName: this.loginForm?.get('userName')?.value,
+      password: this.loginForm?.get('password')?.value,
+    };
     this._loginService
-      .authService(user)
+      .authService(loginRequest)
       .pipe(takeUntil(this._unsub$))
       .subscribe({
         next: (response) => {
-          console.log(response);
+          this._router.navigate(['home']);
         },
       });
   }
