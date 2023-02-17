@@ -15,6 +15,6 @@ export class SigninService {
   constructor(private readonly _httpClient: HttpClient) {}
 
   public auth(request: SigninRequest): Observable<TokenResponse>{
-    return this._httpClient.post<any>(`${URL}/Signin`,request);
+    return this._httpClient.post<any>(`${URL}/login`,request);
   }
 }
