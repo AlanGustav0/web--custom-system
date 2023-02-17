@@ -1,7 +1,6 @@
+import { UserResponse } from "./user-response.interface";
+
 export interface TokenResponse {
-  userName:string;
-  role:string;
-  profileStyle:string;
+  user:UserResponse;
   token:string;
-  expiresToken:string;
 }

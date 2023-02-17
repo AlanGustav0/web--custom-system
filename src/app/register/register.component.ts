@@ -2,6 +2,7 @@ import { RegisterRequest } from '../core/services/login/request/register-request
 import { RegisterService } from './../core/register.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
@@ -15,7 +16,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly _formBuilder: FormBuilder,
-    private readonly _registerService: RegisterService
+    private readonly _registerService: RegisterService,
+    private readonly _router:Router
   ) {}
 
   ngOnInit(): void {
@@ -35,9 +37,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
       .register(registerRequest)
       .pipe(takeUntil(this._unsub$))
       .subscribe({
-        next: (response) => {
-          console.log(response);
-        },
+        next:() => {
+          this._router.navigate(['login']);
+        }
       });
   }
 

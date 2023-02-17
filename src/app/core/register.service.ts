@@ -12,6 +12,9 @@ export class RegisterService {
   constructor(private readonly _httpClient: HttpClient) {}
 
   public register(user: RegisterRequest): Observable<any> {
-    return this._httpClient.post<any>(`${URL}/user`,user);
+    return this._httpClient.post<any>(
+      `${URL}/usuario/cadastrar`,
+      user
+    )
   }
 }
