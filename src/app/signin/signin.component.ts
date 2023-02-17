@@ -1,40 +1,42 @@
 import { Router } from '@angular/router';
-import { LoginService } from './../core/services/login/login.service';
+
 import { Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
-import { LoginRequest } from '../core/services/login/request/login-request.interface';
+import { SigninService } from '../core/services/signin/signin.service';
+import { SigninRequest } from '../core/services/interfaces/request/signin-request.interface';
+
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  selector: 'app-Signin',
+  templateUrl: './Signin.component.html',
+  styleUrls: ['./Signin.component.scss'],
 })
-export class LoginComponent implements OnInit, OnDestroy {
-  public loginForm!: FormGroup;
+export class SigninComponent implements OnInit, OnDestroy {
+  public signinForm!: FormGroup;
   public _unsub$ = new Subject<void>();
 
   constructor(
     private readonly _formBuilder: FormBuilder,
     private readonly _elementRef: ElementRef<HTMLElement>,
-    private readonly _loginService: LoginService,
+    private readonly _signinService: SigninService,
     private readonly _router: Router
   ) {}
 
   ngOnInit(): void {
-    this.loginForm = this._formBuilder.group({
+    this.signinForm = this._formBuilder.group({
       userName: ['', Validators.required],
       password: ['', Validators.required],
     });
   }
 
   onSubmit() {
-    const loginRequest: LoginRequest = {
-      userName: this.loginForm?.get('userName')?.value,
-      password: this.loginForm?.get('password')?.value,
+    const signinRequest: SigninRequest = {
+      userName: this.signinForm?.get('userName')?.value,
+      password: this.signinForm?.get('password')?.value,
     };
-    this._loginService
-      .authService(loginRequest)
+    this._signinService
+      .auth(signinRequest)
       .pipe(takeUntil(this._unsub$))
       .subscribe({
         next: (response) => {
@@ -44,8 +46,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   showPassword() {
-    let password = this._elementRef.nativeElement.querySelector('#password');
-    let iconButton =
+    const password = this._elementRef.nativeElement.querySelector('#password');
+    const iconButton =
       this._elementRef.nativeElement.querySelector('#icon-button');
     iconButton?.classList.toggle('hidden');
 

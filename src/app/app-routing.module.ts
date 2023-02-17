@@ -13,11 +13,11 @@ const routes: Routes = [
   },
   {
     path:'login',
-    loadChildren:() => import('./login/login.module').then((m) => m.LoginModule),
+    loadChildren:() => import('./signin/signin.module').then((m) => m.SigninModule),
   },
   {
     path:'cadastro',
-    loadChildren:() => import('./register/register.module').then((m) => m.RegisterModule),
+    loadChildren:() => import('./signup/signup.module').then((m) => m.SignupModule),
   },
   {
     path:'home',

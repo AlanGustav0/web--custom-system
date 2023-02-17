@@ -1,24 +1,24 @@
 
-import { LoginRoutingModule } from './login-routing-module';
+import { SigninRoutingModule } from './signin-routing-module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from './login.component';
+import { SigninComponent } from './signin.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TooltipModule } from '../shared/components/tooltip/tooltip.module';
-import { HttpClientModule } from '@angular/common/http';
+
 
 
 
 @NgModule({
   declarations: [
-    LoginComponent
+    SigninComponent
   ],
   imports: [
     CommonModule,
-    LoginRoutingModule,
+    SigninRoutingModule,
     ReactiveFormsModule,
     TooltipModule
   ],
 
 })
-export class LoginModule { }
+export class SigninModule { }
