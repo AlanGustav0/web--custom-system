@@ -9,8 +9,8 @@ import { AnimationOptions } from 'ngx-lottie';
 
 
 @Component({
-  templateUrl: './Signin.component.html',
-  styleUrls: ['./Signin.component.scss'],
+  templateUrl: './signin.component.html',
+  styleUrls: ['./signin.component.scss'],
 })
 export class SigninComponent implements OnInit, OnDestroy {
   public signinForm!: FormGroup;
