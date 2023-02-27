@@ -1,55 +1,56 @@
 .menu__container{
+  align-items: center;
   background-color: var(--secundary-default);
-  padding:22px 20px 22px 20px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 22px 20px 22px 20px;
   position: fixed;
-  z-index: 1;
   width: 100vw;
+  z-index: 1;
 
   &__menu-list{
     list-style: none;
   }
 
   &__icon{
-    color:var(--primary-color);
+    color: var(--primary-color);
   }
 
   &__user{
-    width: 60px;
-    height: 60px;
     border-radius: 100%;
     cursor: pointer;
+    height: 60px;
+    width: 60px;
 
     img{
-      width: 60px;
       height: 60px;
+      width: 60px;
     }
   }
 }
 
 .overlay-menu{
-  width: 0px;
-  height: 0px;
-  animation-name: animate-overlay-out;
   animation-duration: 0.5s;
+  animation-name: animate-overlay-out;
   background-color: var(--third-default);
+  height: 0;
   opacity: 0.2;
+  width: 0;
 
   &.active{
-    width: 250px;
-    height: 100vh;
-    animation-name: animate-overlay-in;
     animation-duration: 0.5s;
+    animation-name: animate-overlay-in;
+    height: 100vh;
+    width: 250px;
   }
 }
 
 @keyframes animate-overlay-in{
   from {
-    width: 0px;
+    width: 0;
   }
+
   to{
     width: 250px;
   }
@@ -57,12 +58,13 @@
 
 @keyframes animate-overlay-out{
   from {
+    height: 100vh;
     width: 250px;
-    height: 100vh;
   }
+
   to{
-    width: 0px;
     height: 100vh;
+    width: 0;
   }
 }
 
@@ -71,10 +73,10 @@ ul {
 }
 
 ul > li {
+  cursor: pointer;
   font-size: 0.9rem;
   list-style: none;
   padding-bottom: 10px;
-  cursor: pointer;
 
   &:hover {
     opacity: 0.8;

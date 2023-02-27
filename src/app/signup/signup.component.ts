@@ -45,8 +45,8 @@ export class SignupComponent implements OnInit, OnDestroy {
   }
 
   checkPasswordValidation(): boolean {
-    let password = this.signupForm?.get('password')?.value;
-    let confirmPassword = this.signupForm?.get('confirmPassword')?.value;
+    const password = this.signupForm?.get('password')?.value;
+    const confirmPassword = this.signupForm?.get('confirmPassword')?.value;
 
     if(password !== confirmPassword){
       return true;

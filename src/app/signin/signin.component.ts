@@ -9,7 +9,6 @@ import { AnimationOptions } from 'ngx-lottie';
 
 
 @Component({
-  selector: 'app-Signin',
   templateUrl: './Signin.component.html',
   styleUrls: ['./Signin.component.scss'],
 })
@@ -43,7 +42,7 @@ export class SigninComponent implements OnInit, OnDestroy {
       .auth(signinRequest)
       .pipe(takeUntil(this._unsub$))
       .subscribe({
-        next: (response) => {
+        next: () => {
           this._router.navigate(['home']);
         },
       });

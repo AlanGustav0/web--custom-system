@@ -10,21 +10,21 @@
 
 
 :root{
-  --primary-color:#fff;
-  --secundary:#000;
-  --primary-title:#6D6D6D;
-  --primary-default:#5DC1B9;
-  --secundary-default:#B8F0ED;
-  --third-default:#8ae0db;
-  --default-gray:#cacaca;
+  --primary-color: #fff;
+  --secundary: #000;
+  --primary-title: #6d6d6d;
+  --primary-default: #5dc1b9;
+  --secundary-default: #b8f0ed;
+  --third-default: #8ae0db;
+  --default-gray: #cacaca;
 }
 
 :root .dark-theme{
-  --primary-color:#000;
-  --text:#fff;
-  --primary-default:#5DC1B9;
-  --secundary-dark:#B8F0ED;
-  --third-dark:#8ae0db;
+  --primary-color: #000;
+  --text: #fff;
+  --primary-default: #5dc1b9;
+  --secundary-dark: #b8f0ed;
+  --third-dark: #8ae0db;
 }
 
 body,html{

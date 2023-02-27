@@ -29,14 +29,14 @@
 }
 
 @mixin button-style {
-  border-radius: 1rem;
-  padding: 8px 20px 8px 20px;
   background-color: var(--primary-default);
   border: 1px solid var(--secundary-default);
+  border-radius: 1rem;
   color: var(--primary-color);
   cursor: pointer;
-  margin-bottom: 1rem;
   font-size: 1rem;
+  margin-bottom: 1rem;
+  padding: 8px 20px 8px 20px;
 
   &:hover {
     border: 1px solid var(--third-default);
@@ -47,7 +47,7 @@
 }
 
 @mixin input-style {
-  font-size: 0.9rem;
   border-radius: 16px;
+  font-size: 0.9rem;
   padding: 5px 35px 5px 10px;
 }

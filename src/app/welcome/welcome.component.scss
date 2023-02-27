@@ -1,43 +1,43 @@
 @import "./../../assets//scss/mixins.scss";
 
 .welcome__container {
+  background-color: var(--primary-color);
   height: 100vh;
+  position: relative;
   width: 100vw;
   z-index: 2;
-  position: relative;
-  background-color: var(--primary-color);
 
 
   @include for-phone-only {
-    padding:288px 52px 288px 52px;
+    padding: 288px 52px 288px 52px;
   }
 
   @include for-tablet-portrait {
-    padding:300px 200px 300px 200px;
+    padding: 300px 200px 300px 200px;
   }
 
   @include for-desktop-only {
-    padding:116px 150px 295px 224px;
+    padding: 116px 150px 295px 224px;
   }
 
   &__content {
+    align-items: center;
     display: flex;
     justify-content: space-around;
-    align-items: center;
     position: relative;
-    z-index: 1;
     width: 100%;
+    z-index: 1;
 
     &__card {
       &__title{
-        font-size: 24px;
         color: var(--primary-title);
+        font-size: 24px;
         font-weight: 700;
       }
 
       &__text{
-        font-size: 16px;
         color: var(--primary-title);
+        font-size: 16px;
       }
 
       &__button{
@@ -45,8 +45,8 @@
       }
 
       @include for-phone-only {
-        max-width: 320px;
         margin: 1rem;
+        max-width: 320px;
       }
 
     }

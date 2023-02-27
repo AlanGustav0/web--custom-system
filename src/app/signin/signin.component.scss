@@ -1,11 +1,11 @@
 @import "./../../assets/scss/mixins.scss";
 
 .signin__container {
+  background-color: var(--primary-color);
   height: 100vh;
+  position: relative;
   width: 100vw;
   z-index: 2;
-  position: relative;
-  background-color: var(--primary-color);
 
   @include for-phone-only {
     padding: 147px 30px 147px 30px;
@@ -20,9 +20,9 @@
   }
 
   &__content {
+    align-items: center;
     display: flex;
     justify-content: space-evenly;
-    align-items: center;
 
 
     &__animation {
@@ -77,8 +77,8 @@
 
           &:disabled {
             color: var(--third-default);
-            opacity: 0.9;
             cursor: default;
+            opacity: 0.9;
           }
 
           &:hover:disabled {
@@ -87,21 +87,21 @@
         }
 
         span {
+          align-items: center;
           display: flex;
           position: relative;
-          align-items: center;
         }
 
         &__icon-button {
           background-image: url("../../assets/icons/eye-solid.svg");
           background-repeat: no-repeat;
           background-size: cover;
-          width: 18px;
+          cursor: pointer;
           height: 16px;
           position: absolute;
           right: 5%;
           top: 35%;
-          cursor: pointer;
+          width: 18px;
 
           &.hidden {
             background-image: url("../../assets/icons/eye-slash-solid.svg");
@@ -111,11 +111,11 @@
 
       &__icon {
         background-image: url("../../assets/icons/arrow-back-left.svg");
-        background-size: cover;
         background-position: center center;
-        width: 30px;
-        height: 30px;
+        background-size: cover;
         cursor: pointer;
+        height: 30px;
+        width: 30px;
       }
     }
   }

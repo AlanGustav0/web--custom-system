@@ -1,11 +1,11 @@
 @import "./../../assets/scss/mixins.scss";
 
 .signup__container {
-  height: 100vh;
+  background-color: var(--primary-color);
   display: flex;
+  height: 100vh;
   position: relative;
   z-index: 2;
-  background-color: var(--primary-color);
 
   @include for-phone-only {
     flex-direction: column;
@@ -15,16 +15,16 @@
     display: flex;
 
     &__image {
+      align-items: center;
       background-color: var(--primary-default);
+      display: flex;
+      justify-content: center;
       padding: 128px 56px 128px 56px;
       width: 600px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
 
       @include for-phone-only {
-        width: 100%;
         padding: 50px;
+        width: 100%;
       }
 
       @include for-tablet-portrait {
@@ -32,12 +32,12 @@
       }
 
       &-inner {
-        border-radius: 100%;
-        width: 300px;
-        height: 300px;
         background: url("../../assets/images/signup-image.svg");
         background-repeat: no-repeat;
         background-size: cover;
+        border-radius: 100%;
+        height: 300px;
+        width: 300px;
 
         @include for-phone-only {
           display: none;
@@ -47,11 +47,11 @@
   }
 
   &__content-form {
-    display: flex;
     align-items: center;
-    padding-left: 344px;
+    display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-left: 344px;
 
     @include for-phone-only {
       align-items: baseline;
@@ -59,19 +59,19 @@
     }
 
     @include for-tablet-portrait {
-      justify-content: center;
       flex-direction: column;
+      justify-content: center;
       padding-left: 52px;
     }
 
 
 
       &__form {
-        border-radius: 20px;
-        padding: 64px 32px 30px 32px;
         background-color: var(--primary-default);
+        border-radius: 20px;
         color: var(--primary-color);
         max-width: 434px;
+        padding: 64px 32px 30px 32px;
 
         input {
           @include input-style;
@@ -87,8 +87,8 @@
 
           &:disabled {
             color: var(--default-gray);
-            opacity: 0.9;
             cursor: default;
+            opacity: 0.9;
           }
 
           &:hover:disabled {
@@ -98,14 +98,14 @@
       }
 
       &__icon{
-        background-image: url('../../assets/icons/arrow-back-left.svg');
-        background-size: cover;
-        background-position: center center;
-        min-width: 30px;
-        min-height: 30px;
-        margin-bottom: 1rem;
         align-self: flex-start;
+        background-image: url('../../assets/icons/arrow-back-left.svg');
+        background-position: center center;
+        background-size: cover;
         cursor: pointer;
+        margin-bottom: 1rem;
+        min-height: 30px;
+        min-width: 30px;
 
       }
   }

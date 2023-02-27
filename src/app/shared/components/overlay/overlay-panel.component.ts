@@ -24,7 +24,7 @@ export class OverlayPanelComponent implements OnChanges {
   }
 
   toggle() {
-    let overlay = this._elementRef.nativeElement.querySelector('#overlay');
+    const overlay = this._elementRef.nativeElement.querySelector('#overlay');
 
     if (this.showOverlay) {
       overlay?.classList.add('active');
