@@ -1,0 +1,122 @@
+@import "./../../assets/scss/mixins.scss";
+
+.signin__container {
+  background-color: var(--primary-color);
+  height: 100vh;
+  position: relative;
+  width: 100vw;
+  z-index: 2;
+
+  @include for-phone-only {
+    padding: 147px 30px 147px 30px;
+  }
+
+  @include for-tablet-portrait {
+    padding: 147px 30px 147px 30px;
+  }
+
+  @include for-desktop-only{
+    padding: 116px 120px 216px 105px;
+  }
+
+  &__content {
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+
+
+    &__animation {
+      @include for-phone-only {
+        display: none;
+      }
+
+      @include for-tablet-portrait {
+        display: none;
+      }
+
+      @include for-desktop-only {
+        display: block;
+      }
+    }
+
+    &__form {
+      display: flex;
+      flex-direction: column;
+      &__inner {
+        border: 3px solid var(--secundary-default);
+        border-radius: 20px;
+
+        input {
+          border: 1px solid var(--secundary-default);
+          border-radius: 16px;
+          padding: 9px 0 9px 18px;
+        }
+
+        @include for-phone-only {
+          min-width: 320px;
+          padding: 80px 32px 80px 32px;
+        }
+
+        @include for-tablet-portrait {
+          min-width: 474px;
+          padding: 80px 32px 80px 32px;
+        }
+
+        @include for-desktop-only {
+          min-width: 474px;
+        }
+
+        &__title {
+          color: var(--primary-title);
+          font-size: 20px;
+          font-weight: 600;
+        }
+
+        &__button {
+          @include button-style;
+
+          &:disabled {
+            color: var(--third-default);
+            cursor: default;
+            opacity: 0.9;
+          }
+
+          &:hover:disabled {
+            opacity: 0.9;
+          }
+        }
+
+        span {
+          align-items: center;
+          display: flex;
+          position: relative;
+        }
+
+        &__icon-button {
+          background-image: url("../../assets/icons/eye-solid.svg");
+          background-repeat: no-repeat;
+          background-size: cover;
+          cursor: pointer;
+          height: 16px;
+          position: absolute;
+          right: 5%;
+          top: 35%;
+          width: 18px;
+
+          &.hidden {
+            background-image: url("../../assets/icons/eye-slash-solid.svg");
+          }
+        }
+      }
+
+      &__icon {
+        background-image: url("../../assets/icons/arrow-back-left.svg");
+        background-position: center center;
+        background-size: cover;
+        cursor: pointer;
+        height: 30px;
+        width: 30px;
+      }
+    }
+  }
+}

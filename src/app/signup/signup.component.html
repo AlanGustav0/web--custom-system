@@ -1,0 +1,83 @@
+<main class="signup__container">
+  <section class="signup__container__content">
+    <div class="signup__container__content__animation">
+      <ng-lottie [options]="options"></ng-lottie>
+    </div>
+    <div class="signup__container__content__form">
+      <div class="signup__container__content__form__inner">
+        <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+          <div class="form-group mb-3">
+            <label class="signup__container__content__form__inner__title mb-3" for="userName">Nome</label>
+            <input
+              formControlName="userName"
+              type="text"
+              class="form-control"
+              id="name"
+              placeholder="Digite seu nome"
+            />
+            <ng-container *ngIf="signupForm.controls['userName'].touched">
+              <app-tooltip
+                *ngIf="signupForm.get('userName')?.errors"
+                text="O campo nome é obrigatório"
+              ></app-tooltip>
+            </ng-container>
+          </div>
+          <div class="form-group mb-3">
+            <label class="signup__container__content__form__inner__title mb-3" for="password">Senha</label>
+            <input
+              formControlName="password"
+              type="text"
+              class="form-control"
+              id="password"
+              placeholder="Digite sua senha"
+            />
+            <ng-container *ngIf="signupForm.controls['password'].touched">
+              <app-tooltip
+                *ngIf="signupForm.get('password')?.errors"
+                text="O campo senha é obrigatório"
+              ></app-tooltip>
+            </ng-container>
+          </div>
+          <div class="form-group mb-3">
+            <label class="signup__container__content__form__inner__title mb-3" for="confirmPassword">Confirmar senha</label>
+            <input
+              formControlName="confirmPassword"
+              type="text"
+              class="form-control"
+              id="confirmPassword"
+              placeholder="Confirme sua senha"
+            />
+            <ng-container
+              *ngIf="signupForm.controls['confirmPassword'].touched"
+            >
+              <app-tooltip
+                *ngIf="signupForm.get('confirmPassword')?.errors"
+                text="O campo confirmar senha é obrigatório"
+              ></app-tooltip>
+              <app-tooltip
+                *ngIf="
+                  checkPasswordValidation() &&
+                  !signupForm.get('confirmPassword')?.errors
+                "
+                text="O campo confirmar senha não confere com o campo senha."
+              ></app-tooltip>
+            </ng-container>
+          </div>
+          <button
+            [disabled]="signupForm.invalid || checkPasswordValidation()"
+            type="submit"
+            title="Acessar o sistema"
+            class="signup__container__content__form__inner__button"
+          >
+            Cadastrar
+          </button>
+        </form>
+      </div>
+      <a
+        title="Retornar a página de boas-vindas"
+        class="signup__container__content__form__icon mt-4"
+        routerLink="/welcome"
+      ></a>
+    </div>
+  </section>
+</main>

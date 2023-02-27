@@ -1,0 +1,105 @@
+@import "./../../assets/scss/mixins.scss";
+
+.signup__container {
+  background-color: var(--primary-color);
+  height: 100vh;
+  position: relative;
+  z-index: 2;
+
+  @include for-phone-only {
+    padding: 147px 30px 147px 30px;
+  }
+
+  @include for-tablet-portrait {
+    padding: 147px 30px 147px 30px;
+  }
+
+  @include for-desktop-only{
+    padding: 116px 120px 100px 105px;
+  }
+
+
+  &__content {
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+
+    &__animation {
+      @include for-phone-only {
+        display: none;
+      }
+
+      @include for-tablet-portrait {
+        display: none;
+      }
+
+      @include for-desktop-only {
+        display: block;
+      }
+    }
+
+
+    &__form {
+      display: flex;
+      flex-direction: column;
+
+
+      &__inner {
+        border: 3px solid var(--secundary-default);
+        border-radius: 20px;
+
+        input {
+          border: 1px solid var(--secundary-default);
+          border-radius: 16px;
+          padding: 9px 0 9px 18px;
+        }
+
+        @include for-phone-only {
+          min-width: 320px;
+          padding: 80px 32px 80px 32px;
+        }
+
+        @include for-tablet-portrait {
+          min-width: 474px;
+          padding: 80px 32px 80px 32px;
+        }
+
+        @include for-desktop-only {
+          min-width: 474px;
+          padding: 80px 32px 80px 32px;
+        }
+
+        &__title {
+          color: var(--primary-title);
+          font-size: 20px;
+          font-weight: 600;
+        }
+
+        &__button {
+          @include button-style;
+
+          &:disabled {
+            color: var(--default-gray);
+            cursor: default;
+            opacity: 0.9;
+          }
+
+          &:hover:disabled {
+            opacity: 0.9;
+          }
+        }
+      }
+
+      &__icon {
+        align-self: flex-start;
+        background-image: url("../../assets/icons/arrow-back-left.svg");
+        background-position: center center;
+        background-size: cover;
+        cursor: pointer;
+        margin-bottom: 1rem;
+        min-height: 30px;
+        min-width: 30px;
+      }
+    }
+  }
+}

@@ -1,0 +1,68 @@
+@import "./../../assets//scss/mixins.scss";
+
+.welcome__container {
+  background-color: var(--primary-color);
+  height: 100vh;
+  position: relative;
+  width: 100vw;
+  z-index: 2;
+
+
+  @include for-phone-only {
+    padding: 288px 52px 288px 52px;
+  }
+
+  @include for-tablet-portrait {
+    padding: 300px 200px 300px 200px;
+  }
+
+  @include for-desktop-only {
+    padding: 116px 150px 295px 224px;
+  }
+
+  &__content {
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+
+    &__card {
+      &__title{
+        color: var(--primary-title);
+        font-size: 24px;
+        font-weight: 700;
+      }
+
+      &__text{
+        color: var(--primary-title);
+        font-size: 16px;
+      }
+
+      &__button{
+        @include button-style;
+      }
+
+      @include for-phone-only {
+        margin: 1rem;
+        max-width: 320px;
+      }
+
+    }
+
+    &__animation{
+      @include for-phone-only {
+        display: none;
+      }
+
+      @include for-tablet-portrait {
+        display: none;
+      }
+
+      @include for-desktop-only{
+        display: block;
+      }
+    }
+  }
+}

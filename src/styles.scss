@@ -1,1 +1,38 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+
+*{
+  font-family: 'Quicksand', sans-serif;
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+:root{
+  --primary-color: #fff;
+  --secundary: #000;
+  --primary-title: #6d6d6d;
+  --primary-default: #5dc1b9;
+  --secundary-default: #b8f0ed;
+  --third-default: #8ae0db;
+  --default-gray: #cacaca;
+}
+
+:root .dark-theme{
+  --primary-color: #000;
+  --text: #fff;
+  --primary-default: #5dc1b9;
+  --secundary-dark: #b8f0ed;
+  --third-dark: #8ae0db;
+}
+
+body,html{
+  background-color: var(--primary-color) !important;
+  color: var(--text) !important;
+  width: 100vw;
+  height: 100vh;
+}
+
+
+
