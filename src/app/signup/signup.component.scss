@@ -65,8 +65,8 @@
         }
 
         @include for-desktop-only {
-          padding: 80px 32px 80px 32px;
           min-width: 474px;
+          padding: 80px 32px 80px 32px;
         }
 
         &__title {

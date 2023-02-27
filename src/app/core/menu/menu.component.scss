@@ -1,3 +1,5 @@
+@import '../../../assets/scss/mixins.scss';
+
 .menu__container{
   align-items: center;
   background-color: var(--secundary-default);
@@ -5,7 +7,6 @@
   display: flex;
   justify-content: space-between;
   padding: 22px 20px 22px 20px;
-  position: fixed;
   width: 100vw;
   z-index: 1;
 
@@ -43,6 +44,10 @@
     animation-name: animate-overlay-in;
     height: 100vh;
     width: 250px;
+
+    @include for-phone-only{
+      width: 100%;
+    }
   }
 }
 
@@ -52,7 +57,18 @@
   }
 
   to{
-    width: 250px;
+
+    @include for-phone-only{
+      width: 100%;
+    }
+
+    @include for-tablet-portrait{
+      width: 250px;
+    }
+
+    @include for-desktop-only{
+      width: 250px;
+    }
   }
 }
 
