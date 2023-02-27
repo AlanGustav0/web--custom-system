@@ -2,85 +2,78 @@
 
 .signup__container {
   background-color: var(--primary-color);
-  display: flex;
   height: 100vh;
   position: relative;
   z-index: 2;
 
   @include for-phone-only {
-    flex-direction: column;
+    padding: 147px 30px 147px 30px;
   }
 
-  &__content-image {
+  @include for-tablet-portrait {
+    padding: 147px 30px 147px 30px;
+  }
+
+  @include for-desktop-only{
+    padding: 116px 120px 100px 105px;
+  }
+
+
+  &__content {
+    align-items: center;
     display: flex;
+    justify-content: space-evenly;
 
-    &__image {
-      align-items: center;
-      background-color: var(--primary-default);
-      display: flex;
-      justify-content: center;
-      padding: 128px 56px 128px 56px;
-      width: 600px;
-
+    &__animation {
       @include for-phone-only {
-        padding: 50px;
-        width: 100%;
+        display: none;
       }
 
       @include for-tablet-portrait {
-        width: 457px;
+        display: none;
       }
 
-      &-inner {
-        background: url("../../assets/images/signup-image.svg");
-        background-repeat: no-repeat;
-        background-size: cover;
-        border-radius: 100%;
-        height: 300px;
-        width: 300px;
-
-        @include for-phone-only {
-          display: none;
-        }
+      @include for-desktop-only {
+        display: block;
       }
     }
-  }
 
-  &__content-form {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-left: 344px;
 
-    @include for-phone-only {
-      align-items: baseline;
+    &__form {
+      display: flex;
       flex-direction: column;
-    }
-
-    @include for-tablet-portrait {
-      flex-direction: column;
-      justify-content: center;
-      padding-left: 52px;
-    }
 
 
-
-      &__form {
-        background-color: var(--primary-default);
+      &__inner {
+        border: 3px solid var(--secundary-default);
         border-radius: 20px;
-        color: var(--primary-color);
-        max-width: 434px;
-        padding: 64px 32px 30px 32px;
 
         input {
-          @include input-style;
+          border: 1px solid var(--secundary-default);
+          border-radius: 16px;
+          padding: 9px 0 9px 18px;
         }
 
         @include for-phone-only {
-          margin: 50px 26px 135px 26px;
+          min-width: 320px;
+          padding: 80px 32px 80px 32px;
         }
 
+        @include for-tablet-portrait {
+          min-width: 474px;
+          padding: 80px 32px 80px 32px;
+        }
+
+        @include for-desktop-only {
+          padding: 80px 32px 80px 32px;
+          min-width: 474px;
+        }
+
+        &__title {
+          color: var(--primary-title);
+          font-size: 20px;
+          font-weight: 600;
+        }
 
         &__button {
           @include button-style;
@@ -97,16 +90,16 @@
         }
       }
 
-      &__icon{
+      &__icon {
         align-self: flex-start;
-        background-image: url('../../assets/icons/arrow-back-left.svg');
+        background-image: url("../../assets/icons/arrow-back-left.svg");
         background-position: center center;
         background-size: cover;
         cursor: pointer;
         margin-bottom: 1rem;
         min-height: 30px;
         min-width: 30px;
-
       }
+    }
   }
 }

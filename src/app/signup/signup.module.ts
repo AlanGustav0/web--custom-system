@@ -4,6 +4,10 @@ import { SignupRoutingModule } from './signup-routing-module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SignupComponent } from './signup.component';
+import { LottieModule } from 'ngx-lottie';
+export function playerFactory(): any {
+  return import('lottie-web');
+}
 
 
 
@@ -15,7 +19,7 @@ import { SignupComponent } from './signup.component';
     CommonModule,
     SignupRoutingModule,
     TooltipModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    LottieModule.forRoot({ player: playerFactory })]
 })
 export class SignupModule { }

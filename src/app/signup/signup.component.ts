@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { SignupRequest } from '../core/services/interfaces/request/signup-request.interface';
+import { AnimationOptions } from 'ngx-lottie';
 
 @Component({
   selector: 'app-signup',
@@ -14,6 +15,9 @@ import { SignupRequest } from '../core/services/interfaces/request/signup-reques
 export class SignupComponent implements OnInit, OnDestroy {
   public signupForm!: FormGroup;
   public _unsub$ = new Subject<void>();
+  options: AnimationOptions = {
+    path:'./../../assets/lottie/signup.json'
+  }
 
   constructor(
     private readonly _formBuilder: FormBuilder,
