@@ -40,9 +40,10 @@
 
   &:hover {
     border: 1px solid var(--third-default);
-    color: var(--third-default);
     opacity: 0.9;
   }
+
+  
 }
 
 @mixin input-style {

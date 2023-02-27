@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
 import { SigninService } from '../core/services/signin/signin.service';
 import { SigninRequest } from '../core/services/interfaces/request/signin-request.interface';
+import { AnimationOptions } from 'ngx-lottie';
 
 
 @Component({
@@ -15,6 +16,9 @@ import { SigninRequest } from '../core/services/interfaces/request/signin-reques
 export class SigninComponent implements OnInit, OnDestroy {
   public signinForm!: FormGroup;
   public _unsub$ = new Subject<void>();
+  options: AnimationOptions = {
+    path:'./../../assets/lottie/signin.json'
+  }
 
   constructor(
     private readonly _formBuilder: FormBuilder,
