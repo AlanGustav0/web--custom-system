@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
+import { AnimationOptions } from 'ngx-lottie';
 
 const FormThems = {
   FORM_DEFAULT: './../../assets/images/forms.svg',
@@ -12,6 +13,10 @@ const FormThems = {
 })
 export class WelcomeComponent implements OnInit {
   public formImage = FormThems.FORM_DEFAULT;
+
+  options: AnimationOptions = {
+    path:'./../../assets/lottie/hello.json'
+  }
 
   constructor(private readonly _elementRef: ElementRef<HTMLElement>) {}
 
