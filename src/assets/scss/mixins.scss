@@ -4,37 +4,43 @@
   }
 }
 
-@mixin for-tablet-only {
-  @media (max-width: 900px) {
+@mixin for-tablet-portrait {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+
+@mixin for-tablet-only-landscape {
+  @media (min-width: 900px) {
     @content;
   }
 }
 
 @mixin for-desktop-only {
-  @media (max-width: 1200px) {
+  @media (min-width: 1200px) {
     @content;
   }
 }
 
 @mixin for-big-desktop-only {
-  @media (max-width: 1800px) {
+  @media (min-width: 1800px) {
     @content;
   }
 }
 
 @mixin button-style {
   border-radius: 1rem;
-  padding: 9px 20px 9px 20px;
-  background-color: var(--primary-color);
-  border: none;
-  color: var(--secundary);
-  font-weight: 600;
+  padding: 8px 20px 8px 20px;
+  background-color: var(--primary-default);
+  border: 1px solid var(--secundary-default);
+  color: var(--primary-color);
   cursor: pointer;
   margin-bottom: 1rem;
-  font-size: 0.9rem;
+  font-size: 1rem;
 
   &:hover {
-    color: var(--primary-default-blue);
+    border: 1px solid var(--third-default);
+    color: var(--third-default);
     opacity: 0.9;
   }
 }

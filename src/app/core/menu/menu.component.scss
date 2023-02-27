@@ -1,5 +1,5 @@
 .menu__container{
-  background-color: var(--secundary-default-blue);
+  background-color: var(--secundary-default);
   padding:22px 20px 22px 20px;
   display: flex;
   justify-content: space-between;
@@ -35,7 +35,7 @@
   height: 0px;
   animation-name: animate-overlay-out;
   animation-duration: 0.5s;
-  background-color: var(--third-default-blue);
+  background-color: var(--third-default);
   opacity: 0.2;
 
   &.active{

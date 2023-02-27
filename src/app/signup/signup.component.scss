@@ -15,7 +15,7 @@
     display: flex;
 
     &__image {
-      background-color: var(--primary-default-blue);
+      background-color: var(--primary-default);
       padding: 128px 56px 128px 56px;
       width: 600px;
       display: flex;
@@ -27,7 +27,7 @@
         padding: 50px;
       }
 
-      @include for-tablet-only {
+      @include for-tablet-portrait {
         width: 457px;
       }
 
@@ -58,7 +58,7 @@
       flex-direction: column;
     }
 
-    @include for-tablet-only {
+    @include for-tablet-portrait {
       justify-content: center;
       flex-direction: column;
       padding-left: 52px;
@@ -69,7 +69,7 @@
       &__form {
         border-radius: 20px;
         padding: 64px 32px 30px 32px;
-        background-color: var(--primary-default-blue);
+        background-color: var(--primary-default);
         color: var(--primary-color);
         max-width: 434px;
 

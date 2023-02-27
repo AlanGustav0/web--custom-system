@@ -12,18 +12,19 @@
 :root{
   --primary-color:#fff;
   --secundary:#000;
-  --primary-default-blue:#2E468A;
-  --secundary-default-blue:#1366B2;
-  --third-default-blue:#3271BA;
+  --primary-title:#6D6D6D;
+  --primary-default:#5DC1B9;
+  --secundary-default:#B8F0ED;
+  --third-default:#8ae0db;
   --default-gray:#cacaca;
 }
 
 :root .dark-theme{
   --primary-color:#000;
   --text:#fff;
-  --primary-default-blue:#1B7EC6;
-  --secundary-dark-blue:#56A5DE;
-  --third-dark-blue:#91BBED;
+  --primary-default:#5DC1B9;
+  --secundary-dark:#B8F0ED;
+  --third-dark:#8ae0db;
 }
 
 body,html{
