@@ -7,9 +7,9 @@
   display: flex;
   justify-content: space-between;
   padding: 22px 20px 22px 20px;
+  position: absolute;
   width: 100vw;
   z-index: 1;
-  position: absolute;
 
   &__menu-list{
     list-style: none;
