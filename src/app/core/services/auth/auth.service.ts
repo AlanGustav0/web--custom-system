@@ -11,7 +11,7 @@ const URL = `${environment.baseUrl}`;
 @Injectable({
   providedIn: 'root',
 })
-export class SigninService {
+export class AuthService {
   constructor(private readonly _httpClient: HttpClient) {}
 
   public auth(request: SigninRequest): Observable<TokenResponse>{

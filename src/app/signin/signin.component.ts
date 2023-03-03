@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
-import { SigninService } from '../core/services/signin/signin.service';
+import { AuthService } from '../core/services/auth/auth.service';
 import { SigninRequest } from '../core/services/interfaces/request/signin-request.interface';
 import { AnimationOptions } from 'ngx-lottie';
 
@@ -22,7 +22,7 @@ export class SigninComponent implements OnInit, OnDestroy {
   constructor(
     private readonly _formBuilder: FormBuilder,
     private readonly _elementRef: ElementRef<HTMLElement>,
-    private readonly _signinService: SigninService,
+    private readonly _authService: AuthService,
     private readonly _router: Router,
     private readonly _userService: UserService
   ) {}
@@ -39,7 +39,7 @@ export class SigninComponent implements OnInit, OnDestroy {
       userName: this.signinForm?.get('userName')?.value,
       password: this.signinForm?.get('password')?.value,
     };
-    this._signinService
+    this._authService
       .auth(signinRequest)
       .pipe(takeUntil(this._unsub$))
       .subscribe({
