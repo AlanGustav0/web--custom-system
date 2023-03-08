@@ -1,10 +1,11 @@
 import {
   Component,
   ContentChild,
-  Input,
-  OnChanges,
   TemplateRef,
   ElementRef,
+  ViewChild,
+  OnChanges,
+  Input,
 } from '@angular/core';
 
 @Component({
@@ -13,23 +14,30 @@ import {
   styleUrls: ['./overlay-panel.component.scss'],
 })
 export class OverlayPanelComponent implements OnChanges {
-  @Input() showOverlay!: boolean;
-  @ContentChild('content')
-  content!: TemplateRef<any>;
+  @Input() dismissable = false;
+  @ViewChild('open') open!: ElementRef;
+  @ContentChild('content') content!: TemplateRef<any>;
+  private imgProfile:any = document.querySelectorAll('#imageProfile')[0];
 
   constructor(private readonly _elementRef: ElementRef<HTMLElement>) {}
 
   ngOnChanges(): void {
-    this.toggle();
+    this.isDismissable();
   }
 
-  toggle() {
+  public toggle() {
     const overlay = this._elementRef.nativeElement.querySelector('#overlay');
+    overlay?.classList.add('active');
+  }
 
-    if (this.showOverlay) {
-      overlay?.classList.add('active');
-    } else {
-      overlay?.classList.remove('active');
+  private isDismissable(){
+    if(this.dismissable){
+      window.addEventListener('click',(event) => {
+        if(event.target !== this.imgProfile){
+          const overlay = this._elementRef.nativeElement.querySelector('#overlay');
+          overlay?.classList.remove('active');
+        }
+      })
     }
   }
 }

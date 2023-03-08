@@ -12,6 +12,7 @@ import { faClose } from '@fortawesome/free-solid-svg-icons';
 export class MenuComponent {
   public iconBars = faBars;
   public showOverlay = false;
+  private overlayMenu:any;
 
   constructor(
     private readonly _elementRef: ElementRef<HTMLElement>,
@@ -20,22 +21,23 @@ export class MenuComponent {
   ) {}
 
   public activeMenu() {
-    const menu = this._elementRef.nativeElement.querySelector('#overlay-menu');
-    menu?.classList.toggle('active');
+    this.overlayMenu = this._elementRef.nativeElement.querySelector('#overlay-menu');
+    this.overlayMenu?.classList.toggle('active');
 
-    if (menu?.classList.contains('active')) {
-      this.iconBars = faClose;
-    } else {
-      this.iconBars = faBars;
-    }
+    this.setMenuIcon();
   }
 
-  toggle() {
-    this.showOverlay = !this.showOverlay;
-  }
 
   logout() {
     this._userService.logout();
     this._router.navigate(['/welcome']);
+  }
+
+  private setMenuIcon(){
+    if (this.overlayMenu?.classList.contains('active')) {
+      this.iconBars = faClose;
+    } else {
+      this.iconBars = faBars;
+    }
   }
 }
