@@ -5,11 +5,11 @@ import { AuthGuard } from './core/services/auth/auth.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'welcome',
+    redirectTo: 'boas-vindas',
     pathMatch:'full',
   },
   {
-    path:'welcome',
+    path:'boas-vindas',
     loadChildren:() => import('./welcome/welcome.module').then((m) => m.WelcomeModule),
   },
   {

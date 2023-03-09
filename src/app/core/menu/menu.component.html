@@ -6,14 +6,15 @@
       class="menu__container__icon"
     ></fa-icon>
   </div>
-  <div class="menu__container__user" (click)="toggle()">
+  <div class="menu__container__user" (click)="open.toggle()">
     <img
       src="./../../assets/images/image-profile.svg"
       alt="Imagem do perfil do usuário"
+      id="imageProfile"
     />
   </div>
 </nav>
-<app-overlay [showOverlay]="showOverlay">
+<app-overlay #open [dismissable]="true">
   <ng-template #content>
     <ul>
       <li>Meus dados</li>
