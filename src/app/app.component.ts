@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   <router-outlet></router-outlet>`,
 })
 export class AppComponent {
-  title = 'login-template';
+  title = 'custom-system';
 
 
 }

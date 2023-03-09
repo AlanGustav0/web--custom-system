@@ -30,7 +30,7 @@ export class MenuComponent {
 
   logout() {
     this._userService.logout();
-    this._router.navigate(['/welcome']);
+    this._router.navigate(['/boas-vindas']);
   }
 
   private setMenuIcon(){
