@@ -1,12 +1,12 @@
-@import '../../../assets/scss/mixins.scss';
+@import '../../../assets/scss/mixins';
 
 .menu__container{
   align-items: center;
   background-color: var(--secundary-default);
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
   display: flex;
   justify-content: space-between;
-  padding: 22px 20px 22px 20px;
+  padding: 22px 20px;
   position: absolute;
   width: 100vw;
   z-index: 1;
@@ -59,7 +59,6 @@
   }
 
   to{
-
     @include for-phone-only{
       width: 100%;
     }
