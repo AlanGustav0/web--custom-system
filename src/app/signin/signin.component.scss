@@ -1,28 +1,31 @@
-@import "./../../assets/scss/mixins.scss";
+@import "./../../assets/scss/mixins";
 
 .signin__container {
+  align-items: center;
   background-color: var(--primary-color);
+  display: flex;
   height: 100vh;
+  justify-content: center;
   position: relative;
   width: 100vw;
   z-index: 2;
 
   @include for-phone-only {
-    padding: 147px 30px 147px 30px;
+    padding: 30px;
   }
 
   @include for-tablet-portrait {
-    padding: 147px 30px 147px 30px;
+    padding: 100px;
   }
 
   @include for-desktop-only{
-    padding: 100px 120px 216px 105px;
+    padding: 0 120px;
   }
 
   &__content {
     align-items: center;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
 
 
     &__animation {
@@ -42,24 +45,23 @@
     &__form {
       display: flex;
       flex-direction: column;
+
       &__inner {
         border: 3px solid var(--secundary-default);
         border-radius: 20px;
 
         input {
-          border: 1px solid var(--secundary-default);
-          border-radius: 16px;
-          padding: 9px 0 9px 18px;
+          @include input-style;
         }
 
         @include for-phone-only {
           min-width: 320px;
-          padding: 80px 32px 80px 32px;
+          padding: 80px 32px;
         }
 
         @include for-tablet-portrait {
           min-width: 474px;
-          padding: 80px 32px 80px 32px;
+          padding: 80px 32px;
         }
 
         @include for-desktop-only {
@@ -74,16 +76,6 @@
 
         &__button {
           @include button-style;
-
-          &:disabled {
-            color: var(--third-default);
-            cursor: default;
-            opacity: 0.9;
-          }
-
-          &:hover:disabled {
-            opacity: 0.9;
-          }
         }
 
         span {
@@ -116,6 +108,10 @@
         cursor: pointer;
         height: 30px;
         width: 30px;
+
+        &:hover{
+          opacity: 0.8;
+        }
       }
     }
   }

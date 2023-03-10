@@ -1,23 +1,26 @@
 @import "./../../assets//scss/mixins.scss";
 
 .welcome__container {
+  align-items: center;
   background-color: var(--primary-color);
+  display: flex;
   height: 100vh;
+  justify-content: center;
   position: relative;
   width: 100vw;
   z-index: 2;
 
 
   @include for-phone-only {
-    padding: 288px 52px 288px 52px;
+    padding: 52px;
   }
 
   @include for-tablet-portrait {
-    padding: 300px 200px 300px 200px;
+    padding: 200px;
   }
 
   @include for-desktop-only {
-    padding: 116px 150px 295px 224px;
+    padding: 120px;
   }
 
   &__content {
