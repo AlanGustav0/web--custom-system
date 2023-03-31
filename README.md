@@ -9,7 +9,8 @@ No terminal, execute o comando `ng serve` para o servidor de desenvolvedor. E ac
 ## Ferramentas, conceitos e tecnologias utilizadas no projeto.
 
 • Angular
-• HTML 5 e TypeScript
+• HTML 5
+• TypeScript
 • Pré-processadores (SCSS)
 • Padrão BEM (Block, Element, Modifier)
 • Lazyload
