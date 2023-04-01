@@ -18,5 +18,6 @@ No terminal, execute o comando `ng serve` para o servidor de desenvolvedor. E ac
 • Eslint e Stylelint
 • Mixins
 • Lottie files
-• Web Components 
+• Web Components
+• Deploy CI/CD [Vercel](https://vercel.com/)
 
