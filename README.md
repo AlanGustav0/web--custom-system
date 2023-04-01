@@ -8,16 +8,16 @@ No terminal, execute o comando `ng serve` para o servidor de desenvolvedor. E ac
 
 ## Ferramentas, conceitos e tecnologias utilizadas no projeto.
 
-• Angular
-• HTML 5
-• TypeScript
-• Pré-processadores (SCSS)
-• Padrão BEM (Block, Element, Modifier)
-• Lazyload
-• Guarda de rotas
-• Eslint e Stylelint
-• Mixins
-• Lottie files
-• Web Components
-• Deploy CI/CD [Vercel](https://vercel.com/)
+* Angular
+* HTML 5
+* TypeScript
+* Pré-processadores (SCSS)
+* Padrão BEM (Block, Element, Modifier)
+* Lazyload
+* Guarda de rotas
+* Eslint e Stylelint
+* Mixins
+* Lottie files
+* Web Components
+* Deploy CI/CD com [Vercel](https://vercel.com/)
 
