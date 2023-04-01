@@ -40,11 +40,13 @@
 
   &:disabled {
     color: var(--third-default);
+    border: 1px solid var(--third-default);
     cursor: default;
     opacity: 0.9;
   }
 
   &:hover:disabled {
+    border: 1px solid var(--third-default);
     opacity: 0.9;
   }
 

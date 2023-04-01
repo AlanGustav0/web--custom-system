@@ -17,7 +17,7 @@ export class OverlayPanelComponent implements OnChanges {
   @Input() dismissable = false;
   @ViewChild('open') open!: ElementRef;
   @ContentChild('content') content!: TemplateRef<any>;
-  private imgProfile:any = document.querySelectorAll('#imageProfile')[0];
+  private body:any = document.querySelectorAll('body')[0];
 
   constructor(private readonly _elementRef: ElementRef<HTMLElement>) {}
 
@@ -33,7 +33,7 @@ export class OverlayPanelComponent implements OnChanges {
   private isDismissable(){
     if(this.dismissable){
       window.addEventListener('click',(event) => {
-        if(event.target !== this.imgProfile){
+        if(event.target === this.body){
           const overlay = this._elementRef.nativeElement.querySelector('#overlay');
           overlay?.classList.remove('active');
         }

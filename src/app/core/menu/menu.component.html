@@ -1,26 +1,48 @@
-<nav class="menu__container">
-  <div class="menu__container__menu__list" (click)="activeMenu()">
+<nav class="nav__container">
+  <h2 class="nav__container__brand">LOGO</h2>
+  <div class="nav__container__main-menu">
+  <ul class="nav__container__main-menu__list">
+    <li class="nav__container__main-menu__list__item">Início</li>
+    <li class="nav__container__main-menu__list__item">Sobre</li>
+    <li class="nav__container__main-menu__list__item">Contato</li>
+  </ul>
+</div>
+  <div class="nav__container__menu-mobile" (click)="activeMenu()">
     <fa-icon
       size="xl"
       [icon]="iconBars"
-      class="menu__container__icon"
+      class="nav__container__menu-mobile__icon"
     ></fa-icon>
   </div>
-  <div class="menu__container__user" (click)="open.toggle()">
+  <div class="nav__container__profile" (click)="open.toggle()">
     <img
       src="./../../assets/images/image-profile.svg"
       alt="Imagem do perfil do usuário"
       id="imageProfile"
     />
+    <app-overlay #open [dismissable]="true">
+      <ng-template #content>
+        <ul class="nav__container__profile__overlay">
+          <li class="nav__container__profile__overlay__list">Meus dados</li>
+          <li class="nav__container__profile__overlay__list">Configurações</li>
+          <li class="nav__container__profile__overlay__list" (click)="logout()">
+            Sair do sistema
+          </li>
+        </ul>
+      </ng-template>
+    </app-overlay>
   </div>
 </nav>
-<app-overlay #open [dismissable]="true">
-  <ng-template #content>
-    <ul>
-      <li>Meus dados</li>
-      <li>Configurações</li>
-      <li (click)="logout()">Sair do sistema</li>
-    </ul>
-  </ng-template>
-</app-overlay>
-<div class="overlay-menu" id="overlay-menu"></div>
+<div class="nav__container__side-nav-overlay" id="overlay-menu">
+  <ul class="nav__container__side-nav-overlay__list">
+    <li class="nav__container__side-nav-overlay__list__item">
+      Início
+    </li>
+    <li class="nav__container__side-nav-overlay__list__item">
+      Sobre
+    </li>
+    <li class="nav__container__side-nav-overlay__list__item">
+      Contato
+    </li>
+  </ul>
+</div>

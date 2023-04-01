@@ -19,13 +19,14 @@
   }
 
   @include for-desktop-only{
-    padding: 0 120px;
+    padding: 0 300px;
   }
 
   &__content {
     align-items: center;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    width: 100%;
 
 
     &__animation {
