@@ -5,7 +5,7 @@
     </div>
     <div class="signup__container__content__form">
       <div class="signup__container__content__form__inner">
-        <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="signupForm">
           <div class="form-group mb-3">
             <label class="signup__container__content__form__inner__title mb-3" for="userName">Nome</label>
             <input
@@ -67,6 +67,8 @@
             [disabled]="signupForm.invalid || checkPasswordValidation()"
             type="submit"
             title="Acessar o sistema"
+            (click)="onSubmit()"
+            id="submit"
             class="signup__container__content__form__inner__button"
           >
             Cadastrar
