@@ -20,4 +20,5 @@ No terminal, execute o comando `ng serve` para o servidor de desenvolvedor. E ac
 * Lottie files
 * Web Components
 * Deploy CI/CD com [Vercel](https://vercel.com/)
+* Testes unitários (Jasmine/Karma)
 
