@@ -78,7 +78,7 @@ describe('SigninComponent', () => {
     expect(spyRouter).not.toHaveBeenCalledWith(['home']);
   });
 
-  it(`${SigninComponent.prototype.showPassword.name} should be set attribute (password) when it has been called`,() => {
+  it(`${SigninComponent.prototype.showPassword.name} should be has attribute (password) when it has been called`,() => {
     const password = fixture.nativeElement.querySelector('#password');
     const form = component.signinForm;
     form.patchValue({
@@ -89,7 +89,7 @@ describe('SigninComponent', () => {
     expect(password.getAttribute('type')).toEqual('password');
   });
 
-  it(`${SigninComponent.prototype.showPassword.name} should be set attribute (text) when iconButton has been clicked`,() => {
+  it(`${SigninComponent.prototype.showPassword.name} should be has attribute (text) when iconButton has been clicked`,() => {
     const password = fixture.nativeElement.querySelector('#password');
     const iconButton:HTMLElement = fixture.nativeElement.querySelector('#icon-button');
     const form = component.signinForm;
@@ -100,5 +100,20 @@ describe('SigninComponent', () => {
     iconButton.click();
     fixture.detectChanges();
     expect(password.getAttribute('type')).toEqual('text');
+  });
+
+  it(`${SigninComponent.prototype.showPassword.name} should be has attribute (password) when iconButton has been clicked two twices`,() => {
+    const password = fixture.nativeElement.querySelector('#password');
+    const iconButton:HTMLElement = fixture.nativeElement.querySelector('#icon-button');
+    const form = component.signinForm;
+    form.patchValue({
+      userName: 'user',
+      password: '1234',
+    });
+    iconButton.click();
+    fixture.detectChanges();
+    iconButton.click();
+    fixture.detectChanges();
+    expect(password.getAttribute('type')).toEqual('password');
   });
 });
