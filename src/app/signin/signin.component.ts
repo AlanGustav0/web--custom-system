@@ -18,6 +18,7 @@ export class SigninComponent implements OnInit, OnDestroy {
   options: AnimationOptions = {
     path: './../../assets/lottie/signin.json',
   };
+  public loginError = false;
 
   constructor(
     private readonly _formBuilder: FormBuilder,
@@ -49,7 +50,7 @@ export class SigninComponent implements OnInit, OnDestroy {
           }
         },
         error: () => {
-          console.log('erro');
+          this.loginError = true;
         },
         complete: () => {
           this._router.navigate(['/home']);
