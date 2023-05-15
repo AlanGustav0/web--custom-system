@@ -52,7 +52,7 @@
                 text="O campo senha é obrigatório"
               ></app-tooltip>
               <app-tooltip
-                *ngIf="loginError && !signinForm.invalid"
+                *ngIf="loggedError && !signinForm.invalid"
                 text="Erro ao tentar acessar, por favor verifique o Usuário e Senha."
               ></app-tooltip>
             </ng-container>
