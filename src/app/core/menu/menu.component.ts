@@ -1,8 +1,8 @@
-import { UserService } from './../services/user/user.service';
 import { Component, ElementRef } from '@angular/core';
-import { Router } from '@angular/router';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
+import { Store } from '@ngxs/store';
+import { Logout } from '../ngxs/app.actions';
 
 @Component({
   selector: 'app-menu',
@@ -12,28 +12,26 @@ import { faClose } from '@fortawesome/free-solid-svg-icons';
 export class MenuComponent {
   public iconBars = faBars;
   public showOverlay = false;
-  private overlayMenu:any;
+  private overlayMenu: any;
 
   constructor(
     private readonly _elementRef: ElementRef<HTMLElement>,
-    private readonly _userService: UserService,
-    private readonly _router: Router
+    private readonly _store: Store
   ) {}
 
   public activeMenu() {
-    this.overlayMenu = this._elementRef.nativeElement.querySelector('#overlay-menu');
+    this.overlayMenu =
+      this._elementRef.nativeElement.querySelector('#overlay-menu');
     this.overlayMenu?.classList.toggle('active');
 
     this.setMenuIcon();
   }
 
-
   logout() {
-    this._userService.logout();
-    this._router.navigate(['/boas-vindas']);
+    this._store.dispatch(new Logout());
   }
 
-  private setMenuIcon(){
+  private setMenuIcon() {
     if (this.overlayMenu?.classList.contains('active')) {
       this.iconBars = faClose;
     } else {

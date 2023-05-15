@@ -11,14 +11,14 @@ export class TokenService {
     }
 
     setToken(token: TokenResponse) {
-        window.localStorage.setItem(KEY, JSON.stringify(token));
+        window.sessionStorage.setItem(KEY, JSON.stringify(token));
     }
 
     getToken() {
-        return window.localStorage.getItem(KEY);
+        return window.sessionStorage.getItem(KEY) || '';
     }
 
     removeToken() {
-        window.localStorage.removeItem(KEY);
+        window.sessionStorage.removeItem(KEY);
     }
 }
