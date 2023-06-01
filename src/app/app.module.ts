@@ -11,8 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxsModule } from '@ngxs/store';
 import { AppState } from './core/ngxs/app.state';
 import { environment } from 'src/environments/environments';
-import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { AppHandler } from './core/ngxs/app.handler';
+import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 
 
 export function noop() {
@@ -36,7 +36,10 @@ export function playerFactory(): any {
     NgxsModule.forRoot([AppState], {
       developmentMode: !environment.production,
     }),
-    NgxsReduxDevtoolsPluginModule.forRoot(),
+    NgxsStoragePluginModule.forRoot({
+      key:'appModel'
+    }),
+
   ],
 
   providers: [

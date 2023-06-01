@@ -17,7 +17,8 @@ export class OverlayPanelComponent implements OnChanges {
   @Input() dismissable = false;
   @ViewChild('open') open!: ElementRef;
   @ContentChild('content') content!: TemplateRef<any>;
-  private body:any = document.querySelectorAll('body')[0];
+
+  private body: any = document.querySelectorAll('body')[0];
 
   constructor(private readonly _elementRef: ElementRef<HTMLElement>) {}
 
@@ -25,19 +26,25 @@ export class OverlayPanelComponent implements OnChanges {
     this.isDismissable();
   }
 
-  public toggle() {
-    const overlay = this._elementRef.nativeElement.querySelector('#overlay');
-    overlay?.classList.add('active');
+  public toggle(event: any) {
+    const overlay: HTMLElement | null =
+      this._elementRef.nativeElement.querySelector('#overlay');
+    if (overlay) {
+      overlay.classList.add('active');
+      const position = event.target.clientHeight;
+      overlay.style.top = position + 30 + 'px';
+    }
   }
 
-  private isDismissable(){
-    if(this.dismissable){
-      window.addEventListener('click',(event) => {
-        if(event.target === this.body){
-          const overlay = this._elementRef.nativeElement.querySelector('#overlay');
+  private isDismissable() {
+    if (this.dismissable) {
+      window.addEventListener('click', (event) => {
+        if (event.target === this.body) {
+          const overlay =
+            this._elementRef.nativeElement.querySelector('#overlay');
           overlay?.classList.remove('active');
         }
-      })
+      });
     }
   }
 }

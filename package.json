@@ -26,7 +26,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.2.1",
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
     "@ngxs/logger-plugin": "^3.8.0-dev.master-c86074a",
-    "@ngxs/storage-plugin": "^3.8.0",
+    "@ngxs/storage-plugin": "^3.8.1",
     "@ngxs/store": "^3.8.0-dev.master-c86074a",
     "bootstrap": "^5.2.3",
     "lottie-web": "^5.10.2",

@@ -7,7 +7,7 @@
   display: flex;
   justify-content: space-between;
   padding: 22px;
-  position: absolute;
+  position: fixed;
   width: 100vw;
   z-index: 1;
 
@@ -63,10 +63,13 @@
   }
 
   &__profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border-radius: 100%;
     cursor: pointer;
     height: 60px;
-    width: 60px;
+    gap:10px;
 
     img {
       height: 60px;
