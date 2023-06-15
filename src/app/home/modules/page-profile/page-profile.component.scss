@@ -1,0 +1,82 @@
+@import '../../../../assets//scss/mixins.scss';
+
+.page-profile__container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__figure{
+    display: flex;
+    align-items: center;
+
+    img{
+      width: 350px;
+      height: 350px;
+      border-radius: 100%;
+      cursor: pointer;
+
+      &:hover{
+        opacity: 0.8;
+      }
+    }
+
+
+  }
+
+    &__form {
+      display: flex;
+      align-items: center;
+      gap: 200px;
+
+
+      &__inner {
+        background-color: var(--primary-color);
+        border: 3px solid var(--secundary-default);
+        border-radius: 20px;
+
+        input {
+          @include input-style;
+        }
+
+        @include for-phone-only {
+          min-width: 320px;
+          padding: 80px 32px;
+        }
+
+        @include for-tablet-portrait {
+          min-width: 474px;
+          padding: 80px 32px;
+        }
+
+        @include for-desktop-only {
+          min-width: 474px;
+          padding: 80px 32px;
+        }
+
+        &__title {
+          color: var(--primary-title);
+          font-size: 20px;
+          font-weight: 600;
+        }
+
+        &__button {
+          @include button-style;
+        }
+      }
+
+      &__icon {
+        align-self: flex-start;
+        background-image: url("../../../../assets/icons/arrow-back-left.svg");
+        background-position: center center;
+        background-size: cover;
+        cursor: pointer;
+        margin-bottom: 1rem;
+        min-height: 30px;
+        min-width: 30px;
+
+        &:hover{
+          opacity: 0.8;
+        }
+      }
+    }
+}
