@@ -56,6 +56,7 @@ export class AppState {
       userLogged: false,
       loading: false,
       error: false,
+      user:undefined
     });
   }
 }
