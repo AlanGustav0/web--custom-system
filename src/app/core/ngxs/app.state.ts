@@ -1,7 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Action, State, StateContext } from '@ngxs/store';
 import { AppStateModel } from './interfaces/app.interface.model';
-import { Login, LoginError, LoginSuccess, Logout } from './app.actions';
+import {
+  Login,
+  LoginError,
+  LoginSuccess,
+  Logout,
+  UpdateUser,
+  UpdateUserError,
+  UpdateUserSuccess,
+} from './app.actions';
 
 @State<AppStateModel>({
   name: 'appModel',
@@ -56,7 +64,44 @@ export class AppState {
       userLogged: false,
       loading: false,
       error: false,
-      user:undefined
+      user: undefined,
+    });
+  }
+
+  @Action(UpdateUser)
+  updateUser(context: StateContext<AppStateModel>) {
+    const state = context.getState();
+    context.setState({
+      ...state,
+      userLogged: false,
+      loading: true,
+      error: false,
+    });
+  }
+
+  @Action(UpdateUserSuccess)
+  updateUserSuccess(
+    context: StateContext<AppStateModel>,
+    action: UpdateUserSuccess
+  ) {
+    const state = context.getState();
+    context.setState({
+      ...state,
+      userLogged: true,
+      loading: false,
+      error: false,
+      user:action.response
+    });
+  }
+
+  @Action(UpdateUserError)
+  updateUserError(context: StateContext<AppStateModel>) {
+    const state = context.getState();
+    context.setState({
+      ...state,
+      userLogged: false,
+      loading: false,
+      error: true,
     });
   }
 }
