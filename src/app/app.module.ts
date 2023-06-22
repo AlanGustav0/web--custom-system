@@ -6,13 +6,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LottieModule } from 'ngx-lottie';
-import { InterceptorModule } from './core/services/interceptors/interceptor.module';
+//import { InterceptorModule } from './core/services/interceptors/interceptor.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxsModule } from '@ngxs/store';
 import { AppState } from './core/ngxs/app.state';
 import { environment } from 'src/environments/environments';
-import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { AppHandler } from './core/ngxs/app.handler';
+import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
+import { HomeRoutingModule } from './home/home-routing-module';
 
 
 export function noop() {
@@ -29,14 +30,18 @@ export function playerFactory(): any {
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HomeRoutingModule,
     CoreModule,
-    InterceptorModule,
+    //InterceptorModule,
     HttpClientModule,
     LottieModule.forRoot({ player: playerFactory }),
     NgxsModule.forRoot([AppState], {
       developmentMode: !environment.production,
     }),
-    NgxsReduxDevtoolsPluginModule.forRoot(),
+    NgxsStoragePluginModule.forRoot({
+      key:'appModel'
+    }),
+
   ],
 
   providers: [

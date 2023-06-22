@@ -1,0 +1,19 @@
+@import "./../../../../assets/scss/mixins";
+
+.page-template__container{
+  margin-top: 104px;
+  padding: 50px 165px;
+  gap:30px;
+
+  @include for-phone-only{
+    padding: 50px 20px;
+  }
+
+  @include for-tablet-portrait{
+    padding: 50px 60px;
+  }
+
+  @include for-desktop-only{
+    padding: 50px 165px;
+  }
+}

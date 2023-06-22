@@ -1,15 +1,16 @@
 @import '../../../../assets/scss/mixins';
 
+
 .overlay__container {
   background-color: var(--primary-color);
   border-radius: 12px;
   box-shadow: 0 3px 3px rgb(0 0 0 / 25%);
-  display: none;
   max-width: 150px;
   padding: 10px 10px 0 0;
   position: absolute;
-  top: 80px;
+  display: none;
   z-index: 2;
+  margin-top: 30px;
 
 
   @include for-phone-only{
@@ -28,7 +29,7 @@
     display: block;
   }
 
-  
+
 }
 
 
