@@ -2,11 +2,12 @@ import { TokenResponse } from './../interfaces/response/token-response.interface
 import { Injectable } from '@angular/core';
 import { TokenService } from '../token/token.service';
 import { UserResponse } from '../interfaces/response/user-response.interface';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environments';
 import { Observable } from 'rxjs';
 import { UserProfileResponse } from '../interfaces/response/user-profile-response.interface';
 import { UserProfileRequest } from '../interfaces/request/user-profile-request.interface';
+import { ProfileData } from '../interfaces/request/profile-data-request.interface';
 
 const URL = `${environment.baseUrl}`;
 
@@ -46,5 +47,12 @@ export class UserService {
       `${URL}/usuario/atualizar/perfil`,
       request
     );
+  }
+
+  updateImageProfile(request: ProfileData): Observable<any> {
+    const formData = new FormData();
+    formData.append('File', request.file);
+    formData.append('Id', request.id.toString());
+    return this._httpClient.post(`${URL}/usuario/cadastrar/imagem`, formData);
   }
 }

@@ -2,9 +2,9 @@
   <div class="page-profile__container">
     <form [formGroup]="profileForm" class="page-profile__container__form">
       <figure class="page-profile__container__figure" (click)="fileInput.click()">
-        <img [src]="image" *ngIf="!preview; else showPreview" />
+        <img [src]="image" *ngIf="!preview; else showPreview"/>
         <ng-template #showPreview>
-          <img [src]="preview" class="page-profile__container__img" />
+          <img [src]="preview" class="page-profile__container__img"/>
         </ng-template>
       </figure>
       <input

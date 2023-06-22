@@ -7,6 +7,7 @@ import { UserService } from 'src/app/core/services/user/user.service';
 import { environment } from 'src/environments/environments';
 import { UserProfileRequest } from 'src/app/core/services/interfaces/request/user-profile-request.interface';
 import { UserResponse } from 'src/app/core/services/interfaces/response/user-response.interface';
+import { ProfileData } from 'src/app/core/services/interfaces/request/profile-data-request.interface';
 
 const URL_IMAGE = `${environment.baseUrl}`;
 
@@ -22,14 +23,13 @@ export class PageProfileComponent implements OnInit, OnDestroy {
   public file!: any;
   public profileId!: number;
   public preview!: string;
-  public user!:UserResponse;
+  public user!: UserResponse;
 
   constructor(
     private readonly _store: Store,
     private readonly _formBuilder: FormBuilder,
-    private readonly _userService: UserService,
+    private readonly _userService: UserService
   ) {}
-
 
   ngOnInit(): void {
     this._store
@@ -37,8 +37,8 @@ export class PageProfileComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this._unsub$))
       .subscribe((user) => {
         if (user) {
-          this.user = {...user};
-          this.image = `${URL_IMAGE + this.user.imageProfile}`
+          this.user = { ...user };
+          this.image = `${URL_IMAGE + this.user.imageProfile}`;
         }
       });
 
@@ -50,10 +50,7 @@ export class PageProfileComponent implements OnInit, OnDestroy {
     });
     this.profileId = this.user.userProfileId;
     this.getUserProfile(this.profileId);
-
-
   }
-
 
   handlefile(target: any) {
     const element = target as HTMLInputElement;
@@ -66,6 +63,7 @@ export class PageProfileComponent implements OnInit, OnDestroy {
         this.preview = event.target.result;
       };
       fileReader.readAsDataURL(file[0]);
+      this.updateImageProfile(file[0], this.user.id);
     }
   }
 
@@ -106,16 +104,33 @@ export class PageProfileComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this._unsub$))
       .subscribe({
         next: (response) => {
-          if(response)
-          this.profileForm.patchValue({
-            name: response.userName,
-            email: response.email,
-            address: response.endereco,
-          });
-
+          if (response)
+            this.profileForm.patchValue({
+              name: response.userName,
+              email: response.email,
+              address: response.endereco,
+            });
         },
         error: () => {
           console.log('Erro');
+        },
+      });
+  }
+
+  private updateImageProfile(file: any, id: number) {
+    const request: ProfileData = {
+      file:file,
+      id:id
+    }
+    this._userService
+      .updateImageProfile(request)
+      .pipe(takeUntil(this._unsub$))
+      .subscribe({
+        next: (response) => {
+          console.log(response);
+        },
+        error: (err) => {
+          console.log(err);
         },
       });
   }
