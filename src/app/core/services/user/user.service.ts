@@ -30,9 +30,9 @@ export class UserService {
     return this._tokenService.hasToken();
   }
 
-  getUser(): UserResponse {
-    const token: any = this._tokenService.getToken();
-    return token.user as UserResponse;
+  getUser(id:number): Observable<UserResponse>{
+    const params = new HttpParams().set('id', id);
+    return this._httpClient.get<any>(`${URL}/usuario`, { params });
   }
 
   getUserProfile(id: number): Observable<UserProfileResponse> {

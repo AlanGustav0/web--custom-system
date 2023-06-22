@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environments';
 import { UserProfileRequest } from 'src/app/core/services/interfaces/request/user-profile-request.interface';
 import { UserResponse } from 'src/app/core/services/interfaces/response/user-response.interface';
 import { ProfileData } from 'src/app/core/services/interfaces/request/profile-data-request.interface';
+import { UpdateUser, UpdateUserError } from 'src/app/core/ngxs/app.actions';
 
 const URL_IMAGE = `${environment.baseUrl}`;
 
@@ -79,16 +80,11 @@ export class PageProfileComponent implements OnInit, OnDestroy {
       .updateUserProfile(request)
       .pipe(takeUntil(this._unsub$))
       .subscribe({
-        next: (response) => {
-          if (response) {
-            console.log(response);
-          }
+        next:() => {
+          this.getUserProfile(this.profileId);
         },
         error: () => {
-          console.log('erro');
-        },
-        complete: () => {
-          this.getUserProfile(this.profileId);
+          this._store.dispatch(new UpdateUserError());
         },
       });
   }
@@ -126,11 +122,11 @@ export class PageProfileComponent implements OnInit, OnDestroy {
       .updateImageProfile(request)
       .pipe(takeUntil(this._unsub$))
       .subscribe({
-        next: (response) => {
-          console.log(response);
+        next: () => {
+          this._store.dispatch(new UpdateUser(this.user.id));
         },
-        error: (err) => {
-          console.log(err);
+        error: () => {
+          this._store.dispatch(new UpdateUserError());
         },
       });
   }
