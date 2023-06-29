@@ -16,16 +16,19 @@
   </div>
 
   <div class="nav__container__profile" (click)="open.toggle($event)">
-    <span>Olá, {{userName}}</span>
-    <img
-      src="./../../assets/icons/icon-user.svg"
-      alt="Imagem do perfil do usuário"
-      id="imageProfile"
+    <span>Olá, {{ userName }}</span>
+    <img src="{{imageProfile}}"
+    alt="Imagem do perfil do usuário"
     />
     <app-overlay #open [dismissable]="true">
       <ng-template #content>
         <ul class="nav__container__profile__overlay">
-          <li class="nav__container__profile__overlay__list" [routerLink]="['/perfil-usuario']">Meus dados</li>
+          <li
+            class="nav__container__profile__overlay__list"
+            [routerLink]="['/perfil-usuario']"
+          >
+            Meus dados
+          </li>
           <li class="nav__container__profile__overlay__list">Configurações</li>
           <li
             class="nav__container__profile__overlay__list"
@@ -46,4 +49,3 @@
     <li class="nav__container__side-nav-overlay__list__item">Contato</li>
   </ul>
 </div>
-

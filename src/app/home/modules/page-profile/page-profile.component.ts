@@ -47,6 +47,10 @@ export class PageProfileComponent implements OnInit, OnDestroy {
       name: [''],
       email: [''],
       address: [''],
+      numero: [''],
+      city: [''],
+      state: [''],
+      cep: [''],
       file: [''],
     });
     this.profileId = this.user.userProfileId;
@@ -73,6 +77,10 @@ export class PageProfileComponent implements OnInit, OnDestroy {
       userName: this.profileForm.get('name')?.value,
       email: this.profileForm.get('email')?.value,
       endereco: this.profileForm.get('address')?.value,
+      numero: this.profileForm.get('numero')?.value,
+      cidade: this.profileForm.get('city')?.value,
+      estado: this.profileForm.get('state')?.value,
+      cep: this.profileForm.get('cep')?.value,
       id: this.profileId,
     };
 
@@ -105,6 +113,10 @@ export class PageProfileComponent implements OnInit, OnDestroy {
               name: response.userName,
               email: response.email,
               address: response.endereco,
+              numero:response.numero,
+              city:response.cidade,
+              state:response.estado,
+              cep:response.cep
             });
         },
         error: () => {
