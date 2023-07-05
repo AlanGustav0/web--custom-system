@@ -1,7 +1,10 @@
 <app-page-template>
   <div class="page-profile__container">
     <div class="page-profile__container__content">
-      <form [formGroup]="profileForm" class="page-profile__container__content__form">
+      <form
+        [formGroup]="profileForm"
+        class="page-profile__container__content__form"
+      >
         <figure
           class="page-profile__container__content__form__figure"
           (click)="fileInput.click()"
@@ -10,14 +13,18 @@
           <ng-template #showPreview>
             <img [src]="preview" class="page-profile__content__form__figure" />
           </ng-template>
+          <ng-container *ngIf="imageProfileUpdated">
+            <app-tooltip text="Imagem de perfil atualizada!"></app-tooltip>
+          </ng-container>
         </figure>
+
         <input
           #fileInput
           type="file"
           hidden
           accept="image/*"
           formControlName="file"
-          (change)="handlefile($event.target)"
+          (change)="handleFile($event.target)"
         />
 
         <div class="page-profile__container__content__form__inner">
@@ -34,12 +41,6 @@
               id="name"
               placeholder="Digite seu nome"
             />
-            <!-- <ng-container *ngIf="profileForm.controls['name'].touched">
-            <app-tooltip
-              *ngIf="profileForm.get('name')?.errors"
-              text="O campo nome é obrigatório"
-            ></app-tooltip>
-          </ng-container> -->
           </div>
           <div class="form-group mb-3">
             <label
@@ -54,12 +55,6 @@
               id="email"
               placeholder="Digite seu e-mail"
             />
-            <!-- <ng-container *ngIf="profileForm.controls['email'].touched">
-            <app-tooltip
-              *ngIf="profileForm.get('email')?.errors"
-              text="O campo senha é obrigatório"
-            ></app-tooltip>
-          </ng-container> -->
           </div>
           <div class="row">
             <div class="col-sm-auto col-md-auto col-lg-auto mb-3">
@@ -145,6 +140,9 @@
           >
             Atualizar dados
           </button>
+          <ng-container *ngIf="profileUpdated">
+            <app-tooltip text="Perfil atualizado com sucesso!"></app-tooltip>
+          </ng-container>
         </div>
       </form>
     </div>

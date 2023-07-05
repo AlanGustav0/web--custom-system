@@ -2,7 +2,7 @@
   <h2 class="nav__container__brand">LOGO</h2>
   <div class="nav__container__main-menu">
     <ul class="nav__container__main-menu__list">
-      <li class="nav__container__main-menu__list__item">Início</li>
+      <li class="nav__container__main-menu__list__item" [routerLink]="['/home']">Início</li>
       <li class="nav__container__main-menu__list__item">Sobre</li>
       <li class="nav__container__main-menu__list__item">Contato</li>
     </ul>
@@ -17,8 +17,10 @@
 
   <div class="nav__container__profile" (click)="open.toggle($event)">
     <span>Olá, {{ userName }}</span>
-    <img src="{{imageProfile}}"
-    alt="Imagem do perfil do usuário"
+    <img
+      src="{{ imageProfile }}"
+      alt="Imagem do perfil do usuário"
+      id="imageProfile"
     />
     <app-overlay #open [dismissable]="true">
       <ng-template #content>

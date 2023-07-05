@@ -24,6 +24,8 @@ export class PageProfileComponent implements OnInit, OnDestroy {
   public file!: any;
   public profileId!: number;
   public preview!: string;
+  public profileUpdated = false;
+  public imageProfileUpdated = false;
   public user!: UserResponse;
 
   constructor(
@@ -39,7 +41,7 @@ export class PageProfileComponent implements OnInit, OnDestroy {
       .subscribe((user) => {
         if (user) {
           this.user = { ...user };
-          this.image = `${URL_IMAGE + this.user.imageProfile}`;
+          this.image = this.user.imageProfile ? `${URL_IMAGE + this.user.imageProfile}` : this.image;
         }
       });
 
@@ -57,7 +59,7 @@ export class PageProfileComponent implements OnInit, OnDestroy {
     this.getUserProfile(this.profileId);
   }
 
-  handlefile(target: any) {
+  handleFile(target: any) {
     const element = target as HTMLInputElement;
     const file = element.files;
     this.file = file;
@@ -90,10 +92,16 @@ export class PageProfileComponent implements OnInit, OnDestroy {
       .subscribe({
         next:() => {
           this.getUserProfile(this.profileId);
+          this.profileUpdated = true;
         },
         error: () => {
           this._store.dispatch(new UpdateUserError());
         },
+        complete:() => {
+          setTimeout(() => {
+            this.profileUpdated = false;
+          },2000);
+        }
       });
   }
 
@@ -136,10 +144,16 @@ export class PageProfileComponent implements OnInit, OnDestroy {
       .subscribe({
         next: () => {
           this._store.dispatch(new UpdateUser(this.user.id));
+          this.imageProfileUpdated = true;
         },
         error: () => {
           this._store.dispatch(new UpdateUserError());
         },
+        complete:() => {
+          setTimeout(() => {
+            this.imageProfileUpdated = false;
+          },2000);
+        }
       });
   }
 }

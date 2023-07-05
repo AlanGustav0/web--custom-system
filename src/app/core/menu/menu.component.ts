@@ -32,7 +32,7 @@ export class MenuComponent implements OnInit, OnDestroy {
     .subscribe((user) => {
       if (user) {
         this.userName = user.userName;
-        //this.imageProfile = user.imageProfile ? `${URL + user.imageProfile}` : this.imageProfile;
+        this.imageProfile = user.imageProfile ? `${URL + user.imageProfile}` : this.imageProfile;
       }
 
 
