@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environments';
 import { UserProfileRequest } from 'src/app/core/services/interfaces/request/user-profile-request.interface';
 import { UserResponse } from 'src/app/core/services/interfaces/response/user-response.interface';
 import { ProfileData } from 'src/app/core/services/interfaces/request/profile-data-request.interface';
+import { UpdateUser, UpdateUserError } from 'src/app/core/ngxs/app.actions';
 
 const URL_IMAGE = `${environment.baseUrl}`;
 
@@ -23,6 +24,8 @@ export class PageProfileComponent implements OnInit, OnDestroy {
   public file!: any;
   public profileId!: number;
   public preview!: string;
+  public profileUpdated = false;
+  public imageProfileUpdated = false;
   public user!: UserResponse;
 
   constructor(
@@ -38,7 +41,7 @@ export class PageProfileComponent implements OnInit, OnDestroy {
       .subscribe((user) => {
         if (user) {
           this.user = { ...user };
-          this.image = `${URL_IMAGE + this.user.imageProfile}`;
+          this.image = this.user.imageProfile ? `${URL_IMAGE + this.user.imageProfile}` : this.image;
         }
       });
 
@@ -46,13 +49,17 @@ export class PageProfileComponent implements OnInit, OnDestroy {
       name: [''],
       email: [''],
       address: [''],
+      numero: [''],
+      city: [''],
+      state: [''],
+      cep: [''],
       file: [''],
     });
     this.profileId = this.user.userProfileId;
     this.getUserProfile(this.profileId);
   }
 
-  handlefile(target: any) {
+  handleFile(target: any) {
     const element = target as HTMLInputElement;
     const file = element.files;
     this.file = file;
@@ -72,6 +79,10 @@ export class PageProfileComponent implements OnInit, OnDestroy {
       userName: this.profileForm.get('name')?.value,
       email: this.profileForm.get('email')?.value,
       endereco: this.profileForm.get('address')?.value,
+      numero: this.profileForm.get('numero')?.value,
+      cidade: this.profileForm.get('city')?.value,
+      estado: this.profileForm.get('state')?.value,
+      cep: this.profileForm.get('cep')?.value,
       id: this.profileId,
     };
 
@@ -79,17 +90,18 @@ export class PageProfileComponent implements OnInit, OnDestroy {
       .updateUserProfile(request)
       .pipe(takeUntil(this._unsub$))
       .subscribe({
-        next: (response) => {
-          if (response) {
-            console.log(response);
-          }
+        next:() => {
+          this.getUserProfile(this.profileId);
+          this.profileUpdated = true;
         },
         error: () => {
-          console.log('erro');
+          this._store.dispatch(new UpdateUserError());
         },
-        complete: () => {
-          this.getUserProfile(this.profileId);
-        },
+        complete:() => {
+          setTimeout(() => {
+            this.profileUpdated = false;
+          },2000);
+        }
       });
   }
 
@@ -109,6 +121,10 @@ export class PageProfileComponent implements OnInit, OnDestroy {
               name: response.userName,
               email: response.email,
               address: response.endereco,
+              numero:response.numero,
+              city:response.cidade,
+              state:response.estado,
+              cep:response.cep
             });
         },
         error: () => {
@@ -126,12 +142,18 @@ export class PageProfileComponent implements OnInit, OnDestroy {
       .updateImageProfile(request)
       .pipe(takeUntil(this._unsub$))
       .subscribe({
-        next: (response) => {
-          console.log(response);
+        next: () => {
+          this._store.dispatch(new UpdateUser(this.user.id));
+          this.imageProfileUpdated = true;
         },
-        error: (err) => {
-          console.log(err);
+        error: () => {
+          this._store.dispatch(new UpdateUserError());
         },
+        complete:() => {
+          setTimeout(() => {
+            this.imageProfileUpdated = false;
+          },2000);
+        }
       });
   }
 }

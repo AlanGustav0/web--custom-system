@@ -28,6 +28,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.signupForm = this._formBuilder.group({
       userName: ['', Validators.required],
+      nickName: ['', Validators.required],
       password: ['', Validators.required],
       confirmPassword: ['', [Validators.required]],
     });
@@ -36,6 +37,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   onSubmit() {
     const signupRequest: SignupRequest = {
       userName: this.signupForm?.get('userName')?.value,
+      nickName: this.signupForm?.get('nickName')?.value,
       password: this.signupForm?.get('password')?.value,
     };
     this._signupService

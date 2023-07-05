@@ -5,7 +5,8 @@ import { Store } from '@ngxs/store';
 import { Logout } from '../ngxs/app.actions';
 import { Subject, takeUntil } from 'rxjs';
 import { AppSelectors } from '../ngxs/app.selectors';
-
+import { environment } from 'src/environments/environments';
+const URL = environment.baseUrl;
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -15,6 +16,7 @@ export class MenuComponent implements OnInit, OnDestroy {
   public iconBars = faBars;
   public showOverlay = false;
   public userName = 'Nome do Usuário';
+  public imageProfile = './../../assets/icons/icon-user.svg';
   private overlayMenu: any;
   private _unsub$ = new Subject<void>();
 
@@ -30,7 +32,10 @@ export class MenuComponent implements OnInit, OnDestroy {
     .subscribe((user) => {
       if (user) {
         this.userName = user.userName;
+        this.imageProfile = user.imageProfile ? `${URL + user.imageProfile}` : this.imageProfile;
       }
+
+
     });
   }
 

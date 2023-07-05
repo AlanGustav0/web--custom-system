@@ -1,12 +1,7 @@
 @import '../../../../assets/scss/mixins';
 
 .tooltip__container {
-  height: 20px;
   position: relative;
-
-  @include for-phone-only{
-    height: 40px;
-  }
 
   &__tooltip {
     background-color: var(--primary-color);
@@ -16,7 +11,6 @@
     font-size: 0.8rem;
     left: 10px;
     padding: 3px 5px 5px 3px;
-    position: absolute;
     top: 5px;
 
     &::before{

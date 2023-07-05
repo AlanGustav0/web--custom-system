@@ -68,13 +68,15 @@
     align-items: center;
     border-radius: 100%;
     cursor: pointer;
+    position: relative;
     height: 60px;
     gap:10px;
 
-    img {
-      height: 60px;
-      width: 60px;
-    }
+      img {
+        height: 60px;
+        width: 60px;
+        border-radius: 100%;
+      }
 
     &__overlay {
       padding-left: 10px;
