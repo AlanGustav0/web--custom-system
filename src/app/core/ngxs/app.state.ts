@@ -8,6 +8,9 @@ import {
   Logout,
   UpdateUser,
   UpdateUserError,
+  UpdateUserProfile,
+  UpdateUserProfileError,
+  UpdateUserProfileSuccess,
   UpdateUserSuccess,
 } from './app.actions';
 
@@ -50,7 +53,6 @@ export class AppState {
     const state = context.getState();
     context.setState({
       ...state,
-      userLogged: false,
       loading: false,
       error: true,
     });
@@ -73,7 +75,6 @@ export class AppState {
     const state = context.getState();
     context.setState({
       ...state,
-      userLogged: false,
       loading: true,
       error: false,
     });
@@ -87,10 +88,9 @@ export class AppState {
     const state = context.getState();
     context.setState({
       ...state,
-      userLogged: true,
       loading: false,
       error: false,
-      user:action.response
+      user: action.response,
     });
   }
 
@@ -99,7 +99,40 @@ export class AppState {
     const state = context.getState();
     context.setState({
       ...state,
-      userLogged: false,
+      loading: false,
+      error: true,
+    });
+  }
+
+  @Action(UpdateUserProfile)
+  updateUserProfile(context: StateContext<AppStateModel>) {
+    const state = context.getState();
+    context.setState({
+      ...state,
+      loading: true,
+      error: false,
+    });
+  }
+
+  @Action(UpdateUserProfileSuccess)
+  updateUserProfileSuccess(
+    context: StateContext<AppStateModel>,
+    action: UpdateUserProfileSuccess
+  ) {
+    const state = context.getState();
+    context.setState({
+      ...state,
+      loading: false,
+      error: false,
+      userProfile: action.response,
+    });
+  }
+
+  @Action(UpdateUserProfileError)
+  updateUserProfileError(context: StateContext<AppStateModel>) {
+    const state = context.getState();
+    context.setState({
+      ...state,
       loading: false,
       error: true,
     });

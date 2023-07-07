@@ -21,4 +21,10 @@ export class AppSelectors {
       return state.user;
     });
   }
+
+  static selectUserProfile(){
+    return createSelector([AppState], (state: AppStateModel) => {
+      return state.userProfile;
+    });
+  }
 }
