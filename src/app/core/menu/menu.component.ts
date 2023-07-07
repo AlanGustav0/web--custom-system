@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, OnDestroy } from '@angular/core';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngxs/store';
-import { Logout } from '../ngxs/app.actions';
+import { Logout, UpdateUserProfile } from '../ngxs/app.actions';
 import { Subject, takeUntil } from 'rxjs';
 import { AppSelectors } from '../ngxs/app.selectors';
 import { environment } from 'src/environments/environments';
@@ -31,11 +31,18 @@ export class MenuComponent implements OnInit, OnDestroy {
     .pipe(takeUntil(this._unsub$))
     .subscribe((user) => {
       if (user) {
-        this.userName = user.userName;
+        this._store.dispatch(new UpdateUserProfile(user.userProfileId));
         this.imageProfile = user.imageProfile ? `${URL + user.imageProfile}` : this.imageProfile;
       }
+    });
 
-
+    this._store
+    .select(AppSelectors.selectUserProfile())
+    .pipe(takeUntil(this._unsub$))
+    .subscribe((userProfile) => {
+      if (userProfile?.userName) {
+        this.userName = userProfile.userName;
+      }
     });
   }
 

@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environments';
 import { UserProfileRequest } from 'src/app/core/services/interfaces/request/user-profile-request.interface';
 import { UserResponse } from 'src/app/core/services/interfaces/response/user-response.interface';
 import { ProfileData } from 'src/app/core/services/interfaces/request/profile-data-request.interface';
-import { UpdateUser, UpdateUserError } from 'src/app/core/ngxs/app.actions';
+import { UpdateUser, UpdateUserError, UpdateUserProfile } from 'src/app/core/ngxs/app.actions';
 
 const URL_IMAGE = `${environment.baseUrl}`;
 
@@ -126,6 +126,7 @@ export class PageProfileComponent implements OnInit, OnDestroy {
               state:response.estado,
               cep:response.cep
             });
+            this._store.dispatch(new UpdateUserProfile(this.profileId));
         },
         error: () => {
           console.log('Erro');

@@ -11,6 +11,9 @@ import {
   UpdateUser,
   UpdateUserSuccess,
   UpdateUserError,
+  UpdateUserProfile,
+  UpdateUserProfileSuccess,
+  UpdateUserProfileError,
 } from './app.actions';
 import { Subject, switchMap, takeUntil } from 'rxjs';
 
@@ -69,6 +72,23 @@ export class AppHandler implements OnDestroy {
         },
         error: () =>{
             this._store.dispatch(new UpdateUserError());
+        }
+      });
+
+      this._actions$
+      .pipe(ofActionDispatched(UpdateUserProfile))
+      .pipe(takeUntil(this._unsub$))
+      .pipe(
+        switchMap((update: UpdateUserProfile) => {
+          return this._userService.getUserProfile(update.request);
+        })
+      )
+      .subscribe({
+        next: (response) => {
+          this._store.dispatch(new UpdateUserProfileSuccess(response));
+        },
+        error: () =>{
+            this._store.dispatch(new UpdateUserProfileError());
         }
       });
   }
