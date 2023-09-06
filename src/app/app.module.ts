@@ -14,6 +14,7 @@ import { environment } from 'src/environments/environments';
 import { AppHandler } from './core/ngxs/app.handler';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { HomeRoutingModule } from './home/home-routing-module';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 
 
 export function noop() {
@@ -41,6 +42,7 @@ export function playerFactory(): any {
     NgxsStoragePluginModule.forRoot({
       key:'appModel'
     }),
+    NgxsReduxDevtoolsPluginModule.forRoot()
 
   ],
 

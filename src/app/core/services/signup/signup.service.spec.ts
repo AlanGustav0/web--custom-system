@@ -24,12 +24,13 @@ describe(SignupService.name, () => {
     const request: SignupRequest = {
       userName: 'user',
       password: 'password',
+      nickName: ''
     };
     service
       .signup(request)
       .subscribe((data) => expect(data).not.toBeNull);
 
-    const req = httpTestingController.expectOne('http://localhost:5038/usuario/cadastrar');
+    const req = httpTestingController.expectOne('http://localhost:5038/api/v1/usuario/cadastrar');
     expect(req.request.method).toEqual('POST');
     req.flush(request);
     httpTestingController.verify();

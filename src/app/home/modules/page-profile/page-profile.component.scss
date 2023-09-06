@@ -19,15 +19,18 @@
       gap: 200px;
 
       @include for-phone-only{
-        gap:0;
+        gap: 20px;
+        flex-direction: column;
       }
 
       @include for-tablet-portrait {
-        gap:0;
+        gap:100px;
+        flex-direction: column;
       }
 
       @include for-desktop-only {
-        gap:200px;
+        flex-direction: row;
+        gap:150px;
       }
 
       &__figure {
@@ -42,18 +45,6 @@
           border-radius: 100%;
           cursor: pointer;
           border: solid 1px var(--third-default);
-
-          @include for-phone-only {
-            display: none;
-          }
-
-          @include for-tablet-portrait {
-            display: none;
-          }
-
-          @include for-desktop-only {
-            display: block;
-          }
 
           &:hover {
             opacity: 0.8;

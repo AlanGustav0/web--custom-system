@@ -14,7 +14,7 @@ export class SignupService {
 
   public signup(user: SignupRequest): Observable<any> {
     return this._httpClient.post<any>(
-      `${URL}/usuario/cadastrar`,
+      `${URL}api/v1/usuario/cadastrar`,
       user
     )
   }
