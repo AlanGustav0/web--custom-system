@@ -32,19 +32,19 @@ export class UserService {
 
   getUser(id:number): Observable<UserResponse>{
     const params = new HttpParams().set('id', id);
-    return this._httpClient.get<any>(`${URL}/usuario`, { params });
+    return this._httpClient.get<any>(`${URL}api/v1/usuario`, { params });
   }
 
   getUserProfile(id: number): Observable<UserProfileResponse> {
     const params = new HttpParams().set('id', id);
-    return this._httpClient.get<any>(`${URL}/usuario/perfil`, { params });
+    return this._httpClient.get<any>(`${URL}api/v1/usuario/perfil`, { params });
   }
 
   updateUserProfile(
     request: UserProfileRequest
   ): Observable<UserProfileResponse> {
     return this._httpClient.put<any>(
-      `${URL}/usuario/atualizar/perfil`,
+      `${URL}api/v1/usuario/atualizar/perfil`,
       request
     );
   }
@@ -53,6 +53,6 @@ export class UserService {
     const formData = new FormData();
     formData.append('File', request.file);
     formData.append('Id', request.id.toString());
-    return this._httpClient.post(`${URL}/usuario/cadastrar/imagem`, formData);
+    return this._httpClient.post(`${URL}api/v1/usuario/cadastrar/imagem`, formData);
   }
 }

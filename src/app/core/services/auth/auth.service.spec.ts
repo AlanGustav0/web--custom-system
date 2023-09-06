@@ -4,7 +4,6 @@ import {
   HttpClientTestingModule,
   HttpTestingController,
 } from '@angular/common/http/testing';
-import { HttpClient } from '@angular/common/http';
 import { SigninRequest } from '../interfaces/request/signin-request.interface';
 
 describe(AuthService.name, () => {
