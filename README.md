@@ -1,6 +1,6 @@
 # Web Custom System
 
-Este projeto foi desenvolvido com [Angular CLI](https://github.com/angular/angular-cli) versão 15.0.4.
+Este projeto foi desenvolvido com [Angular CLI](https://github.com/angular/angular-cli) versão 15.2.9.
 
 ## Subida do servdidor local
 
